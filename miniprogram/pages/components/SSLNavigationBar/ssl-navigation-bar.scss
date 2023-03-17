@@ -1,0 +1,20 @@
+/* components/SSLNavigationBar/ssl-navigation-bar.wxss */
+
+.navigation-box{
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.096);;
+}
+
+
+
+.navigation-title{
+  font-size: 23px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}

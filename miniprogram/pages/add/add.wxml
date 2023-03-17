@@ -1,0 +1,17 @@
+<!--pages/add/add.wxml-->
+
+<view class="container">
+  <!-- 标题 -->
+  <ssl-navigation-bar title="添加题目"></ssl-navigation-bar>
+
+  <view class="add-type-box">
+    <text>请选择题目类型</text>
+    <van-dropdown-menu class="menu">
+    <van-dropdown-item style="background-color: red;" value="{{ dropdownMenuData.value1 }}" options="{{ dropdownMenuData.option1 }}" />
+  </van-dropdown-menu>
+  </view>
+
+
+  
+
+</view>

@@ -1,0 +1,7 @@
+<view class="navigation-box">
+  <text class="navigation-title" 
+      style="padding-top: {{menuTop}}px;height: {{menuHeight}}px;">
+      <text>{{title}}</text>
+  </text>
+</view>
+
