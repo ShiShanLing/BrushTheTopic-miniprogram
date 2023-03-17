@@ -1,22 +1,58 @@
 /* pages/add/add.wxss */
 
+
+page{
+  height: 100%;
+}
+
+.container-box{
+  background-color: rgb(242, 242, 242);
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+
 .add-type-box {
-  background-color: red;
-  text-align: center;
-  padding: 0 20px;
-  width: auto;
+  width: 100%;
   margin-top: 30px;
+  display: flex;
   height: 50px;
   line-height: 50px;
-  display: flex;
   
+  .sub-box{
+    width: auto;
+    display: flex;
+    margin: 0 auto;
+  }
   .menu{
     margin-left: 10px;
   }
+  
 }
 .add-title-box {
-
+  display: flex;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  background-color: white;
+  van-field {
+    width: 100%;
+    min-height: 100px;
+  }
+}
+.textarea{
+  min-height: 100px;
 }
 .add-answer-box{
 
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  font-size: 16px;
 }

@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "ssl-navigation-bar": "../components/SSLNavigationBar/ssl-navigation-bar"
-    
   }
 }

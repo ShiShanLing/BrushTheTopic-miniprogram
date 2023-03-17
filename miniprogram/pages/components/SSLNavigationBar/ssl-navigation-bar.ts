@@ -17,11 +17,12 @@ Component({
     menuRight: app.globalData.menuRight,
     menuTop: app.globalData.menuTop,
     menuHeight: app.globalData.menuHeight,
+    windowWidth:wx.getSystemInfoSync().windowWidth
   },
   /**
    * 组件的方法列表
    */
   methods: {
-
+    
   }
 })

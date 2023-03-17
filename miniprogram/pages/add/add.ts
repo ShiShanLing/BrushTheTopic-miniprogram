@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    message:"",
     dropdownMenuData:{
       option1: [
         { text: 'OC', value: 0 },

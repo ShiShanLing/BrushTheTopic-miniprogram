@@ -1,6 +1,7 @@
 // app.ts
 App({
   globalData: {
+    
     navBarHeight: 0, // 导航栏高度
     menuRight: 0, // 胶囊距右方间距（方保持左、右间距一致）
     menuTop: 0, // 胶囊距底部间距（保持底部间距一致）
@@ -10,6 +11,7 @@ App({
     const that = this;
     // 获取系统信息
     const systemInfo = wx.getSystemInfoSync();
+    
     // 胶囊按钮位置信息
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     // 导航栏高度 = 状态栏高度 + 44
