@@ -3,7 +3,6 @@
 <view class="container-box">
   <!-- 标题 -->
   <ssl-navigation-bar title="添加题目"></ssl-navigation-bar>
-
   <view class="add-type-box">
     <view class="sub-box">
       <text>请选择题目类型</text>
@@ -36,8 +35,10 @@
     />
   </view>
 
+
+  <van-button class="add-button" type="primary" size="normal" block>提交</van-button>
   
-  <van-button  type="primary" size="large" style="width: 300px;height: 100px;">提交</van-button>
+  
 
   
 

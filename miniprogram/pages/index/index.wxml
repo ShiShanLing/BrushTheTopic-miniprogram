@@ -1,7 +1,5 @@
 <!--index.wxml-->
 <view class="container" style="background: url(../assets/bt_home_bg.png) no-repeat;">
-
-
   <view class="background-shade">
       <!-- 从这里开始写代码 -->
       

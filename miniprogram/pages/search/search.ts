@@ -5,6 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
+    active1: [0, 1, 2],
+    indexList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    dataSource:[
+      {
+        "type":"Swift",
+        datas:[1, 1, 1],
+      },
+      {
+        "type":"OC",
+        datas:[1, ],
+      },
+      {
+        "type":"Flutter",
+        datas:[1, 1, 1, 1, 1],
+      },
+      {
+        "type":"CSS",
+        datas:[1, 1],
+      },
+    ],
 
   },
 
@@ -62,5 +82,30 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  //点击了搜索
+  onSearch(){
+    console.log("点击了搜索"); 
+  },
+  //搜索框内容发生变化
+  onChange(){
+    console.log("搜索框内容发生了变化");
+  },
+  onChangeItem(event:any) {
+    
+    const { key } = event.currentTarget.dataset;
+    this.setData({
+      [key]: event.detail,
+    });
+    
+    console.log("onChangeItem", event);
+    
+
+    // const { key } = event.currentTarget.dataset;
+    // this.setData({
+    //   [key]: event.detail,
+    // });
+  },
+
+
 })

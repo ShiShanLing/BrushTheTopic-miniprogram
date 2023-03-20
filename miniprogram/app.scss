@@ -1,5 +1,9 @@
 /**app.wxss**/
 
+:root{
+  --global-bj-color:red;
+}
+
 page{
   height: 100%;
 }
@@ -13,10 +17,25 @@ page{
   box-sizing: border-box;
   // background: url(./assets/bt_home_bg.png) no-repeat;
 } 
+
+.container-box{
+  background-color: rgb(242, 242, 242);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 .navigation-bars-title{
   font-size: 23px;
   font-weight: 800;
 }
+
+
+// #name:red;
 
 .submit-button{
   border-radius: 3px;

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "ssl-navigation-bar": "../components/SSLNavigationBar/ssl-navigation-bar",
+    "ssl-list-block":"./components/list-block/list-block"
+  }
+  
 }

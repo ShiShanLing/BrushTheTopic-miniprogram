@@ -1,2 +1,112 @@
 <!--pages/search.wxml-->
-<text>pages/search.wxml</text>
+<view class="container-box">
+  <!-- 标题 -->
+
+
+  <view class="search-box">
+    <van-search 
+    value="{{ value }}"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch">
+    <view class="search-button" slot="action" bind:tap="onClick">搜索</view>
+    </van-search>
+  </view>
+  <!-- ["OC", "Swift", "Flutter", "CSS", "TS"] -->
+  
+    <view class="scroll-view"> 
+    <van-index-bar  index-list="{{ indexList }}">
+  <view>
+    <van-index-anchor index="这是文本?"></van-index-anchor>
+    <van-cell title="文本" />
+    <text>123312321</text>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+
+  <view>
+    <van-index-anchor index="1">2</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="2">3</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="3">4</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="4">5</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="5">6</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="6">6</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="7">7</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="8">8</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="9">9</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="10">10</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="11">11</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="12">12</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  <view>
+    <van-index-anchor index="13">13</van-index-anchor>
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+    <van-cell title="文本" />
+  </view>
+  </van-index-bar>
+    </view> 
+  
+   
+
+
+</view>
