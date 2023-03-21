@@ -11,11 +11,6 @@
     "van-index-anchor": "@vant/weapp/index-anchor/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-icon": "@vant/weapp/icon/index"
-<<<<<<< HEAD
-=======
-    
-    
->>>>>>> 文件错误处理
   },
   "pages": [
     "pages/index/index",
