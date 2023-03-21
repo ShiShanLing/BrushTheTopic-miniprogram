@@ -9,9 +9,8 @@
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-index-bar": "@vant/weapp/index-bar/index",
     "van-index-anchor": "@vant/weapp/index-anchor/index",
-    "van-cell": "@vant/weapp/cell/index"
-    
-    
+    "van-cell": "@vant/weapp/cell/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
   "pages": [
     "pages/index/index",

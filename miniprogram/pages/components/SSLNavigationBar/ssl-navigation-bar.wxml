@@ -1,11 +1,7 @@
-
-  <view class="navigation-box" style="width: {{windowWidth}}px;">
+<view class="navigation-box" style="width: {{windowWidth}}px;">
   <!-- ../bt_return.png -->
   <image class="return-button" capture-bind:tap="goBack" src="../assets/bt_return.png"></image>
-  <text class="navigation-title"
-      style="padding-top: {{menuTop}}px;height: {{menuHeight}}px;">
-      <text>{{title}}</text>
+  <text class="navigation-title" style="padding-top: {{menuTop}}px;height: {{menuHeight}}px;">
+    <text>{{title}}</text>
   </text>
 </view>
-
-

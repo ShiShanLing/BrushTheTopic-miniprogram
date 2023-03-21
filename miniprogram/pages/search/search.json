@@ -1,7 +1,12 @@
 {
   "usingComponents": {
     "ssl-navigation-bar": "../components/SSLNavigationBar/ssl-navigation-bar",
-    "ssl-list-block":"./components/list-block/list-block"
-  }
+    "ssl-list-block":"./components/list-block/list-block",
+    "ssl-search-list-cell":"./components/search-list-cell/index"
+  },
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "搜索",
+  "navigationBarTextStyle": "black"
+
   
 }

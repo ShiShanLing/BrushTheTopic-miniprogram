@@ -7,6 +7,8 @@ Page({
   data: {
     active1: [0, 1, 2],
     indexList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    indexListStr:["搜索" ,"OC", "Swift","TS"],
+    dataSourceTemp:undefined,
     dataSource:[
       {
         "type":"Swift",
@@ -32,7 +34,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    this.setData({
+      dataSourceTemp:require('../service/default-datas').dataJson
+    })
+    
+    console.log("require('../service/default-datas.ts').dataJson==", require('../service/default-datas').dataJson);
+    
   },
 
   /**
@@ -90,22 +97,14 @@ Page({
   //搜索框内容发生变化
   onChange(){
     console.log("搜索框内容发生了变化");
+    console.log(this.data.dataSourceTemp);
   },
-  onChangeItem(event:any) {
-    
-    const { key } = event.currentTarget.dataset;
-    this.setData({
-      [key]: event.detail,
-    });
-    
-    console.log("onChangeItem", event);
-    
 
-    // const { key } = event.currentTarget.dataset;
-    // this.setData({
-    //   [key]: event.detail,
-    // });
-  },
+  pageEventListener:function(params:any) {
+    console.log("pageEventListener");
+    console.log(this.data.dataSourceTemp);
+  }
+
 
 
 })

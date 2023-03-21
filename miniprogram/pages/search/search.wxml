@@ -1,112 +1,45 @@
 <!--pages/search.wxml-->
 <view class="container-box">
   <!-- 标题 -->
-
-
-  <view class="search-box">
-    <van-search 
-    value="{{ value }}"
-    placeholder="请输入搜索关键词"
-    use-action-slot
-    bind:change="onChange"
-    bind:search="onSearch">
-    <view class="search-button" slot="action" bind:tap="onClick">搜索</view>
-    </van-search>
-  </view>
   <!-- ["OC", "Swift", "Flutter", "CSS", "TS"] -->
-  
-    <view class="scroll-view"> 
-    <van-index-bar  index-list="{{ indexList }}">
-  <view>
-    <van-index-anchor index="这是文本?"></van-index-anchor>
-    <van-cell title="文本" />
-    <text>123312321</text>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
+  <van-index-bar sticky='false' index-list="{{ indexListStr }}">
+    <view>
+      <van-index-anchor use-slot="true" index="搜索"></van-index-anchor>
+      <view class="search-box">
+        <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
+          <view class="search-button" slot="action" bind:tap="onClick">搜索</view>
+        </van-search>
+      </view>
+    </view>
 
-  <view>
-    <van-index-anchor index="1">2</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="2">3</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="3">4</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="4">5</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="5">6</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="6">6</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="7">7</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="8">8</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="9">9</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="10">10</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="11">11</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="12">12</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
-  <view>
-    <van-index-anchor index="13">13</van-index-anchor>
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-    <van-cell title="文本" />
-  </view>
+    <view style="width: 100%;">
+      <van-index-anchor style="width: 100%;" use-slot="true" index="OC">OC</van-index-anchor>
+      
+      <!-- topicTitle:String,
+    topicAnswer:String,
+    learnNum:Number, -->
+
+      <ssl-search-list-cell wx:for="{{dataSourceTemp}}" wx:for-index="index" wx:for-item="cell" bindcustomevent="pageEventListener" 
+      topicTitle="{{cell.topicTitle}}" 
+      topicAnswer="{{cell.topicAnswer}}"
+      learnNum='0'
+      >
+      </ssl-search-list-cell>
+
+      <!-- <van-cell wx:for="{{dataSourceTemp}}" wx:for-index="index" wx:for-item="cell" title="{{cell.topicAnswer}}" /> -->
+    </view>
+    
+    <view>
+      <van-index-anchor use-slot="true" index="Swift">Swift</van-index-anchor>      
+      <van-cell title="床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡." />
+    </view>
+    <view>
+      <van-index-anchor use-slot="true" index="TS">TS</van-index-anchor>
+      <van-cell title="床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡." />
+      <van-cell title="床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡." />
+      <van-cell title="床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡.床前明月光,疑是地上霜,举头望明月,低头思故乡." />
+    </view>
   </van-index-bar>
-    </view> 
-  
-   
 
 
 </view>

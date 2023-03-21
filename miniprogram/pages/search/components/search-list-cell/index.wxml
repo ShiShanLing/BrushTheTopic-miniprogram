@@ -1,0 +1,9 @@
+<!--pages/search/components/search-list-cell/index.wxml-->
+<view class="box">
+  <text class="topic">{{topicTitle}}</text>
+  <text class="answer {{ isShowAllText == true ? 'show-all' : '' }}">{{topicAnswer}}</text>
+
+  <text class="learn-num">您已经学习了 {{learnNum}} 次</text>
+  <van-icon class="show-icon" capture-bind:tap="changState" name="{{ isShowAllText == true ? 'arrow-up' : 'arrow-down'}}" size='30px' />
+
+</view>
