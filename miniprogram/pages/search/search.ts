@@ -7,7 +7,7 @@ Page({
   data: {
     active1: [0, 1, 2],
     indexList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-    indexListStr:["搜索" ,"OC", "Swift","TS"],
+    indexListStr:["搜索" ,"OC"],//, "Swift","TS"
     dataSourceTemp:undefined,
     dataSource:[
       {
@@ -36,10 +36,7 @@ Page({
   onLoad() {
     this.setData({
       dataSourceTemp:require('../service/default-datas').dataJson
-    })
-    
-    console.log("require('../service/default-datas.ts').dataJson==", require('../service/default-datas').dataJson);
-    
+    });
   },
 
   /**

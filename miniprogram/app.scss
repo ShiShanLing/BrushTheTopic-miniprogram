@@ -6,6 +6,7 @@
 
 page{
   height: 100%;
+  width: 100%;
 }
 .container {
   background-color: rgb(242, 242, 242);
@@ -20,7 +21,7 @@ page{
 
 .container-box{
   background-color: rgb(242, 242, 242);
-  height: 100%;
+  height: auto;
   width: 100%;
   display: flex;
   position: relative;

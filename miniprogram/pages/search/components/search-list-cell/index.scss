@@ -1,17 +1,22 @@
 /* pages/search/components/search-list-cell/index.wxss */
 
 .box {
+  width: auto;
+  // width: 300px;
   padding: 0 20px;
+  overflow: hidden;
+  // margin-right: 40px;
+  // padding-right: 40px;
+  padding-bottom: 5px;
   height: auto;
   background-color: white;
-  overflow: hidden;
-  position: relative;
+  
 }
 .topic {
   margin: 15px 0;
 
   float: left;
-  font-size: 18px;
+  font-size: 16px;
   color: black;
   font-weight: 700;
 }
@@ -19,14 +24,16 @@
   //默认只展示两行
   .answer {
     margin-bottom: 15px;
-
+    margin-left: 10px;
+    margin-right: 10px;
     float: left;
-    font-size: 16px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.74);
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    word-break: break-all;
   }
 
 //展示所有的答案 show-all
@@ -35,13 +42,28 @@
 }
 
 .learn-num {
+  
+  
   float: left;
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(255, 0, 0, 0.712);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .show-icon{
   margin-right: 15px;
   float: right;
 }
+
+.divider {
+  width: 100%;
+  height: 0.6px;
+  
+  float: left;
+  background-color: rgb(232, 232, 232);
+  // background-color: red;
+}
+
+
+
+
