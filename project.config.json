@@ -33,14 +33,17 @@
         "packageJsonPath": "./package.json",
         "miniprogramNpmDistDir": "./miniprogram/"
       }
-    ]
+    ],
+    "minified": true,
+    "uglifyFileName": true,
+    "postcss": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {},
   "srcMiniprogramRoot": "miniprogram/",
   "appid": "wxdb60a28f7fd1d93d",
-  "libVersion": "2.30.2",
+  "libVersion": "2.25.3",
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

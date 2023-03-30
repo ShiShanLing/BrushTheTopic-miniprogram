@@ -1,9 +1,0 @@
-<!--pages/search/components/list-block/list-block.wxml-->
-<view class="custom-class list-block van-clearfix {{ padding ? 'list-block--padding' : '' }}">
-  <view wx:if="{{ title }}" class="list-block__title">{{ title }}</view>
-  <view class="list-block__card" wx:if="{{ card }}">
-    <slot />
-  </view>
- <slot wx:else />
-</view>
-

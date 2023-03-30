@@ -1,0 +1,40 @@
+<view class="container-box" style="min-height: 100%;">
+  <view wx:if="{{isForgetAnswer==true}}">
+  </view>
+  <view wx:else style="width: 100%;">
+    <ssl-audio-paly wx:if="{{isVoiceAnswer==true}}" duration="{{audioInfo.duration}}" fileSize="{{audioInfo.fileSize}}" tempFilePath="{{audioInfo.tempFilePath}}"></ssl-audio-paly>
+    <view wx:else>
+
+      <view class="yours-answer-box">
+        <view class="yours-title">
+          您的回答
+          <view class="concealer"></view>
+        </view>
+      </view>
+
+      <view class="answer-text-box">
+        <editor class="editor" id="editor" read-only='true' bindready="onEditorReady" style="height: 100px;">
+        </editor>
+      </view>
+
+
+
+    </view>
+
+    <view class="yours-answer-box">
+      <view class="yours-title refer-answer-title-shadow" style="color:green;">
+        参考答案
+        <view class="concealer"></view>
+      </view>
+    </view>
+    <view class="answer-text-box refer-answer-shadow">
+      <editor class="editor" id="referAnswerEditor" read-only='true' bindready="onEditorReady">
+      </editor>
+    </view>
+
+    <!-- 下一步跳转到标准答案页面,并与提交的答案作对比. -->
+    <button class="next-answer-button" capture-bind:tap="nextAnswer">下一题</button>
+
+  </view>
+
+</view>

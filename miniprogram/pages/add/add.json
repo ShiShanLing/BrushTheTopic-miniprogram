@@ -1,5 +1,11 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
-    "ssl-navigation-bar": "../components/SSLNavigationBar/ssl-navigation-bar"
+    "van-field": "@vant/weapp/field/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-button": "@vant/weapp/button/index"
+    
   }
+  
 }

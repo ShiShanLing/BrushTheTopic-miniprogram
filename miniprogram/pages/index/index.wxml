@@ -1,19 +1,18 @@
 <!--index.wxml-->
-<view class="container" style="background: url(../assets/bt_home_bg.png) no-repeat;">
+<view class="container" style="background: url(https://sjbz-fd.zol-img.com.cn/t_s1080x1920c/g5/M00/00/02/ChMkJ1fJVACIOcDTAAmrpgi1J2QAAU9uQETzP4ACau-914.jpg) no-repeat;background-size:100% 100%;">
   <view class="background-shade">
       <!-- 从这里开始写代码 -->
       
       <text class="navigation-bars-title" 
       style="margin-top: {{menuTop}}px;height: {{menuHeight}}px;">
       <text>没日一刷</text>
-      
       </text>
       <view class="home-icon-box">
         <image capture-bind:tap="pushToSearchPage" class="home-icon" src="../assets/home_search.png"/>
         <image class="home-icon icon-add" capture-bind:tap="pushToAddPage" src="../assets/home_add.png"/>
       </view>
       <text class="home-info-title">坚持学习每一天</text>
-      <text class="home-info-subtitle">您已经学习了N添加,学会了N个面试题,其中N个已经很熟练N个还需要复习.</text>
+      <text class="home-info-subtitle">您已经学习了N天,学会了N个题目,其中N个已经很熟练N个还需要复习.</text>
       <button class="start-learn" capture-bind:tap="pushToAnswerPage">开始学习</button>
       
   </view>

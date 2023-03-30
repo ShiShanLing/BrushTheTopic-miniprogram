@@ -1,22 +1,55 @@
 <!--pages/add/add.wxml-->
 
-<view class="container-box">
-  <!-- 标题 -->
-  <ssl-navigation-bar title="添加题目"></ssl-navigation-bar>
+<view class="fixedView">
+ <navigation-controller navigationTitle="添加题目" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
+    <!-- 插槽 -->
+    <view slot="before" style="width: 100%;">
+      <view class="add-type-box">
+        <view class="sub-box">
+          <text>请选择题目类型</text>
+          <van-dropdown-menu class="menu">
+            <van-dropdown-item bind:change="onDropdownItemChange" value="{{ menuValue }}" options="{{ menuOption }}" />
+          </van-dropdown-menu>
+        </view>
+      </view>
+      <view class="add-title-box">
+        <van-field value="{{topic}}" label="题目" bind:change="onTopicChange" type="textarea" placeholder="请输入题目" autosize border="{{ false }}" />
+      </view>
+      <view class="add-title-box">
+        <van-field value="{{answer}}" label="答案" bind:change="onAnswerChange" type="textarea" placeholder="请输入答案" autosize border="{{ false }}" />
+      </view>
+      <view class="button-box">
+        <van-button class="add-button" type="primary" size="normal" capture-bind:tap="onSubmit" block>提交</van-button>
+      </view>
+    </view>
+ </navigation-controller>
+ 
+</view>
+
+
+<!-- <view class="container-box" style="min-height: 100%;">
+  
+  <view class="navigation-bar-box" >
+    <ssl-navigation-bar title="添加题目"></ssl-navigation-bar>
+  </view>
+
   <view class="add-type-box">
     <view class="sub-box">
       <text>请选择题目类型</text>
     <van-dropdown-menu class="menu">
-      <van-dropdown-item style="background-color: red;" value="{{ dropdownMenuData.value1 }}" options="{{ dropdownMenuData.option1 }}" />
+      <van-dropdown-item 
+      bind:change="onDropdownItemChange"
+      value="{{ menuValue }}" 
+      options="{{ menuOption }}" />
     </van-dropdown-menu>
     </view>
   
   </view>
-
   <view class="add-title-box">
     <van-field 
-    value="{{ message }}"
+    value="{{topic}}"
     label="题目"
+    bind:change="onTopicChange"
     type="textarea"
     placeholder="请输入题目"
     autosize
@@ -26,24 +59,17 @@
 
   <view class="add-title-box">
     <van-field 
-    value="{{ message }}"
+    value="{{answer}}"
     label="答案"
+    bind:change="onAnswerChange"
     type="textarea"
     placeholder="请输入答案"
     autosize
     border="{{ false }}"
     />
   </view>
+  <van-button class="add-button" type="primary" size="normal" capture-bind:tap="onSubmit" block>提交</van-button>
+</view> -->
 
-
-  <van-button class="add-button" type="primary" size="normal" block>提交</van-button>
-  
-  
-
-  
-
-
-
-  
-
-</view>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

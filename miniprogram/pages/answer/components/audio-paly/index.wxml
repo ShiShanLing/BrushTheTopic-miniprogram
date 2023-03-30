@@ -1,0 +1,11 @@
+<!--pages/components/audio-paly/index.wxml-->
+<view class="paly-record-box">
+  <van-icon wx:if="{{isPlay==true}}" class="paly-button" capture-bind:tap="onPlayAudio" name="pause-circle" color="white" size="30px"/>
+  <van-icon wx:if="{{isPlay==false}}"class="paly-button" capture-bind:tap="onPlayAudio" name="play-circle" color="white" size="30px"/>
+  <view class="play-progress-bar">
+    <van-slider value="{{progress}}" use-button-slot bind:change="onSliderChange">
+      <view class="custom-button" slot="button">{{currentPalyNum}}/{{totalToNumber_s}}</view>
+    </van-slider>
+  </view>
+  <van-icon class="trumpet-icon" name="volume-o" color="white" size="20px" />
+</view>

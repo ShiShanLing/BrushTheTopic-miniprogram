@@ -2,23 +2,37 @@
 <view class="container-box">
   <!-- 标题 -->
   <!-- ["OC", "Swift", "Flutter", "CSS", "TS"] -->
-  <van-index-bar sticky='false' index-list="{{ indexListStr }}" >
+  <van-index-bar sticky="{{false}}" index-list="{{ indexListStr }}" style="width: 100%;">
     <view>
-      <van-index-anchor use-slot="true" index="搜索"></van-index-anchor>
+      <van-index-anchor use-slot="false" sticky="{{false}}" index="搜索" ></van-index-anchor>
       <view class="search-box">
-        <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
-          <view class="search-button" slot="action" bind:tap="onClick">搜索</view>
-        </van-search>
+        <view class="tf-box">
+          <van-search value="{{ searchValue }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onSearchValueChange">
+          </van-search>
+        </view>
+        <van-dropdown-menu class="search-type">
+          <van-dropdown-item 
+           bind:change="onDropdownItemChange"
+           value="{{ menuValue }}" 
+           options="{{ menuOption }}" />
+        </van-dropdown-menu>
       </view>
     </view>
-    <view >
+    <view wx:for="{{dataSource}}" wx:for-index="index" wx:for-item="searchData" wx:key="index">
+      <!-- 页眉 -->
+      <van-index-anchor use-slot="false" index="{{searchData.topicType}}" >{{searchData.topicType}}</van-index-anchor>
+      <!-- cell -->
+      <ssl-search-list-cell wx:for="{{searchData.topic}}" wx:for-index="celliIndex" wx:for-item="cell" wx:key="topicTitle" bindcustomevent="pageEventListener" isLast="{{celliIndex==(searchData.topic.length - 1) && index!=dataSource.length-1}}" topicTitle="{{cell.topicTitle}}" topicAnswer="{{cell.topicAnswer}}" learnNum='0'>
+      </ssl-search-list-cell>
+    </view>
+    <!-- <view >
       <van-index-anchor  use-slot="true" index="OC">OC</van-index-anchor>
-      <ssl-search-list-cell  wx:for="{{dataSourceTemp}}" wx:for-index="index" wx:for-item="cell" bindcustomevent="pageEventListener" 
+      <ssl-search-list-cell  wx:for="{{dataSource}}" wx:for-index="index" wx:for-item="cell" bindcustomevent="pageEventListener" 
       topicTitle="{{cell.topicTitle}}" 
       topicAnswer="{{cell.topicAnswer}}"
       learnNum='0'>
       </ssl-search-list-cell>
-    </view>
+    </view> -->
   </van-index-bar>
 
 

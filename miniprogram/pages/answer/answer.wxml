@@ -1,2 +1,49 @@
 <!--pages/answer/answer.wxml-->
-<text>第一次遇到这个问题</text>
+<navigation-controller navigationTitle="开始答题" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
+  <!-- 插槽 -->
+  <view slot="before" style="width: 100%;">
+    <wxs module="RM">
+      var msg = "hello world";
+      module.exports.message = msg;
+    </wxs>
+    <view class="container-box">
+      <text class="issue">{{topic.topicTitle}}</text>
+    </view>
+    <van-tabs bind:click='tabsTap' type="card">
+      <van-tab title="语音答题">
+        <view class="answer-voice-box">
+          <view class="record-explain">最多录制60秒</view>
+          <view class="flex-box">
+            <button wx:if="{{recorderState==0}}" class="start-record-button" capture-bind:tap="onStartRecorder">
+              开始录音
+            </button>
+            <button wx:if="{{recorderState==1}}" class="start-record-button" capture-bind:tap="onPauseRecorder">
+              暂停 {{recorderDuration}}
+            </button>
+            <button wx:if="{{recorderState==2}}" class="start-record-button" capture-bind:tap="onResumeRecorder">
+              继续 {{recorderDuration}}
+            </button>
+            <button wx:if="{{recorderState==3}}" class="start-record-button" capture-bind:tap="onStartRecorder">
+              重新录制
+            </button>
+            <button class="start-record-button" capture-bind:tap="onStopRecorder">结束录音</button>
+          </view>
+          <ssl-audio-paly wx:if="{{recorderState==3 && audioInfo!=null}}" duration="{{audioInfo.duration}}" fileSize="{{audioInfo.fileSize}}" tempFilePath="{{audioInfo.tempFilePath}}"></ssl-audio-paly>
+        </view>
+      </van-tab>
+      <van-tab title="文字答题">
+        <view class="answer-text-box">
+          <editor placeholder="请输入答案..." bindinput="textChange">
+          </editor>
+        </view>
+      </van-tab>
+    </van-tabs>
+    <!-- 下一步跳转到标准答案页面,并与提交的答案作对比. -->
+    <button class="answer-end-button" capture-bind:tap="submitAnswer">提交答案</button>
+    <!-- 跳转到查看答案页面 可以使用查看答案页面,把标准答案隐藏掉. -->
+    <button class="forget-answer-button" capture-bind:tap="forgetAnswer">忘记了?查看答案</button>
+  </view>
+</navigation-controller>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

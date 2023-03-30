@@ -1,0 +1,47 @@
+/* pages/components/audio-paly/index.wxss */
+
+.paly-record-box{
+  height: 43px;
+  border-radius: 25px;
+  display: flex;
+  background-color: rgb(131, 138, 146);
+  //
+  .paly-button{
+    float: left;
+    height: 43px;
+    width: 43px;
+    margin-left: 3px;
+  }
+
+  .play-progress-bar{
+    position: relative;
+    flex: 1;
+    
+    margin-left: 20px;
+    padding-top: 22px;;
+    height: 43px;
+    float: left;
+    margin-right: 20px;
+
+    .custom-button{
+      text-align: center;
+      width: 30px;
+      font-size: 12px;
+      height: 20px;
+      padding: 0 6px;
+      line-height: 20px;
+      background-color: rgb(243, 243, 243);
+      border-radius: 10px;
+    }
+  }
+  //音量喇叭
+  .trumpet-icon{
+    flex: 0;
+    margin-left: 3px;
+    height: 33px;
+    width: 43px;
+    margin-right: 15px;
+    padding: 5px;
+    
+  }
+}

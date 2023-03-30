@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+    "van-slider": "@vant/weapp/slider/index",
     "van-icon": "@vant/weapp/icon/index"
   }
 }

@@ -1,8 +1,12 @@
 {
   "usingComponents": {
     "ssl-navigation-bar": "../components/SSLNavigationBar/ssl-navigation-bar",
-    "ssl-list-block":"./components/list-block/list-block",
-    "ssl-search-list-cell":"./components/search-list-cell/index"
+    "ssl-search-list-cell":"./components/search-list-cell/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index"
   },
   "enablePullDownRefresh": false,
   "navigationBarTitleText": "搜索",

@@ -7,6 +7,7 @@ Component({
     topicTitle:String,
     topicAnswer:String,
     learnNum:Number,
+    isLast:Boolean,
   },
   /**
    * 组件的初始数据

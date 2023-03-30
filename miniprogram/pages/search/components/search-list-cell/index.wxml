@@ -2,10 +2,7 @@
 <view class="box">
   <text class="topic">{{topicTitle}}</text>
   <text class="answer {{ isShowAllText == true ? 'show-all' : '' }}" capture-bind:tap="changState">{{topicAnswer}}</text>
-
   <text class="learn-num" >您已经学习了 {{learnNum}} 次</text>
   <van-icon class="show-icon" capture-bind:tap="changState" name="{{ isShowAllText == true ? 'arrow-up' : 'arrow-down'}}" size='25px' />
-  
-  
-  <view class="divider"></view>
+  <view wx:if="{{isLast == false}}" class="divider"></view>
 </view>

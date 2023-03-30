@@ -1,5 +1,9 @@
 /**index.wxss**/
 
+.container-image{
+  background: url(../assets/bt_home_bg.png) no-repeat;
+  background-size:100% 100%;
+}
 
 .background-shade{
   height: 100%;
@@ -13,6 +17,7 @@
 .home-navigation-bars-title{
   font-size: 23px;
   font-weight: 800;
+  
 }
 //
 .home-icon-box{
@@ -22,6 +27,7 @@
     width: 30px;height: 30px;
     padding: 10px;
     float: right;
+    
   }
   .icon-add{
     color: black;
@@ -56,13 +62,14 @@
 .home-info-title{
   font-size: 20px;
   padding: 20px;
-  color: rgba(0, 0, 0, 0.86);
+  
+  color: white;
 }
 //description
 .home-info-subtitle{
   font-size: 18px;
   padding: 20px;
-  color: rgba(0, 0, 0, 0.76);
+  color: rgba(255, 255, 255, 0.818);
 }
 
 .start-learn{

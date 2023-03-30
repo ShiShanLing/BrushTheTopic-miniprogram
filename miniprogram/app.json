@@ -1,24 +1,17 @@
 {
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
-    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-search": "@vant/weapp/search/index",
-    "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-index-bar": "@vant/weapp/index-bar/index",
-    "van-index-anchor": "@vant/weapp/index-anchor/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-divider": "@vant/weapp/divider/index"
+    "ssl-audio-paly":"pages/answer/components/audio-paly/index",
+    "navigation-controller": "pages/components/navigation-controller/navigation-controller",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/search/search",
     "pages/add/add",
-    "pages/answer/answer"
+    "pages/answer/answer",
+    "pages/answer/sub-pages/check-answer/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,5 +19,6 @@
     "navigationBarTitleText": "每日一刷",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

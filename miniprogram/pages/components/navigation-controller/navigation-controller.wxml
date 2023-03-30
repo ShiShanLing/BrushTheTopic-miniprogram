@@ -1,0 +1,11 @@
+<!--pages/components/navigation-controller/navigation-controller.wxml-->
+<view class="controller-box" style="background-color: {{backgroundColor}};">
+  <view class="navigation-bar-box" >
+    <!-- isHideBackButton -->
+    <ssl-navigation-bar isHideBackButton="{{isHideBackButton}}" bind:goBack="goBack" title="{{navigationTitle}}"></ssl-navigation-bar>
+  </view>
+  <view id="content-box" class="content-box" style="background-color: {{backgroundColor}};">
+    <slot name="before"></slot>
+  </view>
+</view>
+
