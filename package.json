@@ -7,7 +7,8 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.10.14",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "guid-typescript": "^1.0.9"
   },
   "devDependencies": {
     "miniprogram-api-typings": "3.9.0"

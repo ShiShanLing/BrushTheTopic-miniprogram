@@ -1,10 +1,12 @@
 // pages/add/add.ts
 
-import { TopicType } from "../service/default-datas";
+import { Topic, TopicType } from "../service/default-datas";
 import Dialog from '@vant/weapp/dialog/dialog';
 import Toast from '@vant/weapp/toast/toast';
 
-import { Topic } from "../assets/default-datas";
+
+import { Guid } from "/guid-typescript/index";
+
 
 
 Page(
@@ -118,6 +120,7 @@ Page(
   */
  onSubmit(){
 
+  
     if (this.data.topic.length == 0 && this.data.answer.length == 0){
       Dialog.alert({
         title: '温馨提示',
@@ -156,13 +159,15 @@ Page(
 
     }
   
-
+    
+    let temp_id = Guid.create().toString();
     let tempTopic:Topic = {
       topicType:this.data.menuValue,
       learnNum:0,
       levelLearning:0,
       topicTitle:this.data.topic,
       topicAnswer:this.data.answer,
+      id:temp_id
     }
 
     console.log("tempTopic==", tempTopic);

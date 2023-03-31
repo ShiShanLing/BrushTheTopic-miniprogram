@@ -2,10 +2,7 @@
 <navigation-controller navigationTitle="开始答题" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
   <!-- 插槽 -->
   <view slot="before" style="width: 100%;">
-    <wxs module="RM">
-      var msg = "hello world";
-      module.exports.message = msg;
-    </wxs>
+
     <view class="container-box">
       <text class="issue">{{topic.topicTitle}}</text>
     </view>

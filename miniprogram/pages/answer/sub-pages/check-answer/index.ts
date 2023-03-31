@@ -7,6 +7,8 @@
 */
 
 import { Topic } from "miniprogram/pages/service/default-datas";
+import { Base64 } from "../../../../pages/tools/general-tools";
+import { AppSercive } from "../../../../pages/service/sercive";
 
 // import { Topic } from "miniprogram/pages/assets/default-datas";
 
@@ -20,6 +22,7 @@ Page({
   /**
    * 页面的初始数据
    */
+  
   data: {
     /*
     页面类型
@@ -38,35 +41,63 @@ Page({
       /** 录音文件的临时路径 (本地路径) */
       tempFilePath: String
     },
-    textAnswer: "<p>当 _UIApplicationHandleEventQueue() 识别了一个手势时，其首先会调用 Cancel 将当前的 touchesBegin/Move/End 系列回调打断。随后系统将对应的 UIGestureRecognizer 标记为待处理。</p><p>苹果注册了一个 Observer 监测 BeforeWaiting (Loop即将进入休眠) 事件，这个 Observer 的回调函数是 _UIGestureRecognizerUpdateObserver()，其内部会获取所有刚被标记为待处理的 GestureRecognizer，并执行GestureRecognizer 的回调。</p><p>当有 UIGestureRecognizer 的变化(创建/销毁/状态改变)时，这个回调都会进行相应处理。</p>",
+    textAnswer: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(option: any) {
-
-    console.log("option===", option);
-
-    console.log("before- option.topic===", option.topic);
     
-    let topic = JSON.parse(option.topic) as Topic;
-    console.log("topic===123321", topic);
 
+
+
+  console.log(option);
+  
+    // 
+
+    console.log("截止后option====", option);
+    let objc:{topic_id:string, isForgetAnswer:string} = option
+    console.log("option.topicid", objc.topic_id);
+    
+    let isForgetAnswer = option.isForgetAnswer;
+    console.log("修改之前isForgetAnswer", isForgetAnswer);
+    console.log(typeof isForgetAnswer);
+    let decodeTopic = option.topic_id;
+    console.log("option.topic==", decodeTopic);
+
+    let topic:Topic|undefined = undefined;
+
+    AppSercive.GlobalTopics.forEach(element => {
+      if (element.id == option.topic_id){
+        topic = element;
+      }
+    });
+    console.log("topic===123321", topic);
     let voiceAnswer:any;
     if (option.voiceAnswer != undefined) {
-      voiceAnswer = JSON.parse(option.voiceAnswer)
+      voiceAnswer = Base64.decode(option.voiceAnswer)
+      console.log("解密后voiceAnswer==", voiceAnswer);
+      
+      voiceAnswer = JSON.parse(voiceAnswer)
+      console.log("voiceAnswer===", voiceAnswer);
       this.setData({
         voiceAnswer:voiceAnswer
       })
+      console.log("this.data.voiceAnswer==", this.data.voiceAnswer);
+      
     }
+    //
+    let textAnswer = decodeURI(option.textAnswer);
     console.log("option.voiceAnswer==", option.voiceAnswer);
     this.setData({
-      isVoiceAnswer: option.isVoiceAnswer,
+      isVoiceAnswer: (option.isVoiceAnswer == "true"),
       topic: topic,
-      textAnswer: option.textAnswer,
-      isForgetAnswer: option.isForgetAnswer,
+      textAnswer: textAnswer ?? "",
+      isForgetAnswer: (isForgetAnswer == "true"),
     })
+    console.log("修改之后查看",this.data.isForgetAnswer);
+    
 
 
 
@@ -134,36 +165,30 @@ Page({
     let weakThis = this;
     //用户的回答
     wx.createSelectorQuery().select('#editor').context(function (res) {
-      res.context.setContents({
-        html: weakThis.data.textAnswer
-      });
+      if (res != null){
+        res.context.setContents({
+          html: weakThis.data.textAnswer
+        });
+      }
     }).exec()
     if (weakThis.data.topic != null) {
       wx.createSelectorQuery().select('#referAnswerEditor').context(function (res) {
-        res.context.setContents({
-          html: weakThis.data.topic.topicAnswer
-        });
+        if (res){
+          res.context.setContents({
+            html: weakThis.data.topic.topicAnswer
+          });
+        }
       }).exec()
     }
-  
   },
   //下一题
   nextAnswer() {
-    // wx.navigateTo({url:'miniprogram/pages/answer/answer'});
-    console.log("nextAnswer");
-
-
     wx.redirectTo({
       url: '/pages/answer/answer',
     })
-
-    // wx.navigateTo({
-    //   url:"/pages/answer/answer"
-    // });
+  },
+  goBack(){
+    wx.navigateBack();
   }
-
-  // wx.navigateTo({
-  //   url:"../add/add"
-  // })
 
 })

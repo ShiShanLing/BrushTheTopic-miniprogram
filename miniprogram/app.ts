@@ -1,4 +1,7 @@
-import { Topic } from "./pages/assets/default-datas";
+import { Topic } from "./pages/service/default-datas";
+
+
+
 
 // app.ts
 App({
@@ -44,25 +47,24 @@ App({
       },
     })
   },
+
   DBInit() {
 
+    // let dateStr = Date.parse(new Date().toString());
+    // console.log("时间戳-----", dateStr);
+    // let nowTime = new Date(Date.parse(new Date().toString()));
+    
     try {
       var isStorage = wx.getStorageSync('isStorage')
       if (isStorage!=true) {
-        wx.setStorageSync("learnedDays", 1);
-        wx.setStorageSync("isStorage", true)
-        let tempDatas:Topic[] = require('./pages/service/default-datas').dataJson
+        
+        wx.setStorageSync("isStorage", true);
+        wx.setStorageSync('learnTime', {"last":"", "numDay":1});
+        let tempDatas:Topic[] = require('./pages/service/default-datas').dataJson;
         console.log("DBInit-准备存进去==", tempDatas);
-        wx.setStorageSync("topic", tempDatas)
+        wx.setStorageSync("topic", tempDatas);
       }else{
         console.log("已经存进去了", wx.getStorageSync('topic'));
-        var learnedDays = wx.getStorageSync("learnedDays");
-        if (learnedDays != null){
-          //需要计算时间是不是新的一天.然后 numDays + 1
-        }else{
-          wx.setStorageSync("learnedDays", {'numDays':1, date:Date()});
-        }
-        wx.setStorageSync("learnedDays", learnedDays + 1);
       }
     } catch (e) {
       console.log("getStorageSync('isStorage')==", e);

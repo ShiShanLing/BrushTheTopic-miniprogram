@@ -1,7 +1,14 @@
 // index.ts
 // 获取应用实例
 
+import { Topic } from "../service/default-datas";
+import { AppSercive } from "../service/sercive";
+import { dateFormat, dateStrFormatTimestamp } from "../tools/general-tools";
+
+
 const globalApp = getApp()
+
+
 
 Page({
   data: {
@@ -15,6 +22,7 @@ Page({
     menuRight: 0,
     menuTop: 0,
     menuHeight: 0,
+    laernDays:-1,//默认给个-1
 
   },
   // 事件处理函数
@@ -24,21 +32,67 @@ Page({
     })
   },
   onLoad() {
-    //
-    console.log("app------", globalApp.globalData.navBarHeight);
-    
     this.setData({
       navBarHeight: globalApp.globalData.navBarHeight,
       menuRight: globalApp.globalData.menuRight,
       menuTop: globalApp.globalData.menuTop,
       menuHeight: globalApp.globalData.menuHeight,
     })
+    this.handleData();
     // @ts-ignore
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
+  },
+  handleData(){
+    try {
+      let datas: Topic[] = wx.getStorageSync('topic')
+      AppSercive.GlobalTopics = datas;
+      console.log("AppSercive.GlobalTopics==", AppSercive.GlobalTopics);
+      console.log("datas===", datas);
+      var learnedDays:{numDays:number, date:number} = wx.getStorageSync("learnedDays");
+      console.log("learnedDays==", learnedDays);
+      //处理学习时间
+      handleLearnedDate(learnedDays);
+    } catch {
+
+    }
+    //处理学习时间
+    function handleLearnedDate(learnedDays:{numDays:number, date:number}){
+      if (learnedDays != null){
+        //计算两个时间的时间差.把两个时间转成 number相减 > 0就算新的一天
+        let nowTime = new Date(learnedDays.date);
+        let oldDateStr = dateFormat(nowTime, "YY-MM-DD")
+        let newDateStr = dateFormat(new Date(), "YY-MM-DD")
+        oldDateStr = oldDateStr.replace(/-/g, '')
+        newDateStr = newDateStr.replace(/-/g, '')
+        console.log("oldDateStr-", oldDateStr, "newDateStr-", newDateStr);
+        let oldDateNum = Number(oldDateStr);
+        let newDateNum = Number(newDateStr);
+        console.log("oldDateNum-", oldDateNum, "newDateNum-", newDateNum);
+        if (newDateNum > oldDateNum){
+          //需要计算时间是不是新的一天.然后 numDays + 1
+          learnedDays.numDays += 1;
+          learnedDays.date = dateStrFormatTimestamp(newDateStr);
+          wx.setStorageSync("learnedDays", learnedDays);
+          //在这里刷新数据
+          // this.setData({
+          //   laernDays:learnedDays.numDays
+          // });
+        }
+        
+      }else{
+        let funTest = dateFormat(new Date, "YY-MM-DD")
+        let timestamp = dateStrFormatTimestamp(funTest)
+        wx.setStorageSync("learnedDays", {numDays:1, date:timestamp});
+        // this.setData({
+        //   laernDays:1
+        // });
+      }
+    }
+
   },
   //
   getUserProfile() {
@@ -77,4 +131,6 @@ Page({
       url:"../answer/answer"
     })
   }
+
+
 })

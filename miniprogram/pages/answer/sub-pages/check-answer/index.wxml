@@ -1,40 +1,56 @@
-<view class="container-box" style="min-height: 100%;">
-  <view wx:if="{{isForgetAnswer==true}}">
-  </view>
-  <view wx:else style="width: 100%;">
-    <ssl-audio-paly wx:if="{{isVoiceAnswer==true}}" duration="{{audioInfo.duration}}" fileSize="{{audioInfo.fileSize}}" tempFilePath="{{audioInfo.tempFilePath}}"></ssl-audio-paly>
-    <view wx:else>
-
+<navigation-controller navigationTitle="查看答案" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
+  <!-- 插槽 -->
+  <view slot="before" style="width: 100%;">
+    <text class="issue">{{topic.topicTitle}}</text>
+    
+    <!-- 如果是忘记答案 -->
+    <view wx:if="{{isForgetAnswer==true}}">
       <view class="yours-answer-box">
-        <view class="yours-title">
-          您的回答
+        <view class="yours-title refer-answer-title-shadow" style="color:green;">
+          参考答案-忘记答案{{isForgetAnswer}}
           <view class="concealer"></view>
         </view>
       </view>
-
-      <view class="answer-text-box">
-        <editor class="editor" id="editor" read-only='true' bindready="onEditorReady" style="height: 100px;">
+      <view class="answer-text-box refer-answer-shadow">
+        <editor class="editor" id="referAnswerEditor" read-only='true' bindready="onEditorReady">
         </editor>
       </view>
-
-
-
     </view>
 
-    <view class="yours-answer-box">
-      <view class="yours-title refer-answer-title-shadow" style="color:green;">
-        参考答案
-        <view class="concealer"></view>
+    <!-- 如果没有忘记答案 -->
+    <view wx:else style="width: 100%;">
+      <!-- 如果是语音回答 -->
+
+      
+      <view wx:if="{{ isVoiceAnswer == true }}" class="audio-paly-box">
+        <ssl-audio-paly  duration="{{voiceAnswer.duration}}" fileSize="{{voiceAnswer.fileSize}}" tempFilePath="{{voiceAnswer.tempFilePath}}"></ssl-audio-paly>
+      </view>
+      <!-- 如果是文字回答 -->
+      <view wx:else>
+        <view class="yours-answer-box">
+          <view class="yours-title">
+            您的回答
+            <view class="concealer"></view>
+          </view>
+        </view>
+        <view class="answer-text-box">
+          <editor class="editor" id="editor" read-only='true' bindready="onEditorReady" style="height: 100px;">
+          </editor>
+        </view>
+      </view>
+
+      <view class="yours-answer-box">
+        <view class="yours-title refer-answer-title-shadow" style="color:green;">
+          参考答案
+          <view class="concealer"></view>
+        </view>
+      </view>
+      <view class="answer-text-box refer-answer-shadow">
+        <editor class="editor" id="referAnswerEditor" read-only='true' bindready="onEditorReady">
+        </editor>
       </view>
     </view>
-    <view class="answer-text-box refer-answer-shadow">
-      <editor class="editor" id="referAnswerEditor" read-only='true' bindready="onEditorReady">
-      </editor>
-    </view>
-
     <!-- 下一步跳转到标准答案页面,并与提交的答案作对比. -->
     <button class="next-answer-button" capture-bind:tap="nextAnswer">下一题</button>
-
   </view>
-
-</view>
+</navigation-controller>
