@@ -43,24 +43,35 @@ Page({
     answerType:0,//0语音 1文字
     textAnswer:"",//用户的text答案
     allTopic:[] as Topic[],
+    learnType:""
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad(option:any) {
+    console.log("answer-option", option);
 
-    
 
     try {
       let datas: Topic[] = wx.getStorageSync('topic')
+      
+      if (option.type != null && option.type != ""){
+        datas = datas.filter((topic:Topic)=>{
+          return topic.topicType == option.type;
+        })
+        console.log("筛选过后--datas", datas);
+        
+      }
+      
       let result = this.getRandomNum(0, datas.length - 1);
       this.setData({
         topic: datas[result],
         allTopic:datas
       })
     } catch {
-
+      console.log("读取数据失败");
+      
     }
 
     let weakThis = this;
@@ -84,7 +95,8 @@ Page({
       })
     })
     this.setData({
-      recorderManager: recorderManager
+      recorderManager: recorderManager,
+      learnType:option.type
     })
 
 
@@ -186,10 +198,11 @@ Page({
     let param = `isVoiceAnswer=${this.data.answerType==0}&isForgetAnswer=false&topic_id=${id}`
 
     if (this.data.answerType==0){
+      
       if (this.data.audioInfo!=null){
         let voiceAnswer = {
-          duration:this.data.audioInfo.duration,
-          fileSize:this.data.audioInfo.fileSize,
+          duration:(Math.round(this.data.audioInfo.duration)),
+          fileSize:(Math.round(this.data.audioInfo.fileSize)),
           tempFilePath:this.data.audioInfo.tempFilePath
         }
         let voiceAnswerStr = JSON.stringify(voiceAnswer);

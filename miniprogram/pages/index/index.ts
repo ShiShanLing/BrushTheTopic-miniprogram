@@ -1,7 +1,7 @@
 // index.ts
 // 获取应用实例
 
-import { Topic } from "../service/default-datas";
+import { Topic, TopicType } from "../service/default-datas";
 import { AppSercive } from "../service/sercive";
 import { dateFormat, dateStrFormatTimestamp } from "../tools/general-tools";
 
@@ -23,6 +23,8 @@ Page({
     menuTop: 0,
     menuHeight: 0,
     laernDays:-1,//默认给个-1
+    menuOption: [] as TopicType[],
+    menuValue: "",
 
   },
   // 事件处理函数
@@ -32,11 +34,28 @@ Page({
     })
   },
   onLoad() {
+
+
+    var topicType:TopicType[] = require('../service/default-datas').topicType;
+
+    let menuValue = "";
+
+    try {
+      //如果存储过 那么就取出来
+      menuValue = wx.getStorageSync("currentLearnType")
+    } catch (error) {
+      
+    }
+    topicType = [{text: "All",value: "",}].concat(topicType);
+  
+    console.log("onLoad-topicType==", topicType);
     this.setData({
       navBarHeight: globalApp.globalData.navBarHeight,
       menuRight: globalApp.globalData.menuRight,
       menuTop: globalApp.globalData.menuTop,
       menuHeight: globalApp.globalData.menuHeight,
+      menuOption:topicType,
+      menuValue:menuValue,
     })
     this.handleData();
     // @ts-ignore
@@ -123,14 +142,20 @@ Page({
   },
   pushToSearchPage(){
     wx.navigateTo({
-      url:"../search/search"
+      url:`../search/search`
     })
   },
   pushToAnswerPage(){
     wx.navigateTo({
-      url:"../answer/answer"
+      url:`../answer/answer?type=${this.data.menuValue}`
     })
-  }
-
+  },
+  onDropdownItemChange(ev: any){
+    console.log("onDropdownItemChange==", ev.detail)
+    this.setData({
+      menuValue:ev.detail
+    })
+    wx.setStorageSync("currentLearnType", ev.detail)
+  },
 
 })

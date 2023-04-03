@@ -78,7 +78,11 @@ Page({
     if (option.voiceAnswer != undefined) {
       voiceAnswer = Base64.decode(option.voiceAnswer)
       console.log("解密后voiceAnswer==", voiceAnswer);
+      console.log("type==", (typeof voiceAnswer));
       
+      // {"duration":3562.167167663574,"fileSize":316078,"tempFilePath":"wxfile://tmp_c8a13a4344b47e30383a7218d6e6ed19.wav"}
+      const reg = /\s+/g;
+      voiceAnswer.replace(reg, "\" ")
       voiceAnswer = JSON.parse(voiceAnswer)
       console.log("voiceAnswer===", voiceAnswer);
       this.setData({

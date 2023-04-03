@@ -1,9 +1,45 @@
 /**index.wxss**/
 
+
 .container-image{
   background: url(../assets/bt_home_bg.png) no-repeat;
   background-size:100% 100%;
 }
+
+.add-type-box {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+
+  
+  .sub-box{
+    width: auto;
+    display: flex;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.127);
+    border-radius: 4px;
+    overflow: hidden;
+
+
+  }
+  .title{
+    margin-left: 10px;
+    color:white,
+  }
+  .menu{
+    width: 70px;
+    margin-left: 10px;
+  }
+}
+
+.type-descriptions{
+  background-color: rgba(0, 0, 255, 0.127);
+  color: white;
+  margin-top: 35px;
+}
+
 
 .background-shade{
   height: 100%;

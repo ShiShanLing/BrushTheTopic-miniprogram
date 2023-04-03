@@ -57,7 +57,7 @@ Page({
     } catch (error) {
       let datas: Topic[] = require('../service/default-datas').dataJson
       this.topicDataClassify(datas);
-
+      console.log("数据获取失败");
     }
   },
   //给数据分类

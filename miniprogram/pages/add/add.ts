@@ -6,6 +6,7 @@ import Toast from '@vant/weapp/toast/toast';
 
 
 import { Guid } from "/guid-typescript/index";
+import { Text } from "XrFrame/components";
 
 
 
@@ -29,7 +30,7 @@ Page(
    */
   onLoad() {
     let topicType:TopicType[] = require('../service/default-datas').topicType;
-
+    
     console.log("topicTyp===", topicType);
     this.setData({
       menuOption:topicType,
