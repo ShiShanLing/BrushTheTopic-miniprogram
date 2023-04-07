@@ -3,5 +3,6 @@
   "usingComponents": {
     "van-tab":"@vant/weapp/tab/index"
     
-  }
+  },
+  "disableScroll":true
 }

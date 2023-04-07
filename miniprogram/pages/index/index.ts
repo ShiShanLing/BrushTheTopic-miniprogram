@@ -8,7 +8,11 @@ import { dateFormat, dateStrFormatTimestamp } from "../tools/general-tools";
 
 const globalApp = getApp()
 
-
+/*
+需要添加的功能
+学习类型和 已学习题目数据绑定.
+添加学习类型.
+*/
 
 Page({
   data: {
@@ -25,6 +29,9 @@ Page({
     laernDays:-1,//默认给个-1
     menuOption: [] as TopicType[],
     menuValue: "",
+    totalNum : 0,
+    skilledNum : 0,
+    unskilledNum : 0,
 
   },
   // 事件处理函数
@@ -35,7 +42,7 @@ Page({
   },
   onLoad() {
 
-
+    let weakThis = this;
     var topicType:TopicType[] = require('../service/default-datas').topicType;
 
     let menuValue = "";
@@ -57,7 +64,8 @@ Page({
       menuOption:topicType,
       menuValue:menuValue,
     })
-    this.handleData();
+    
+    
     // @ts-ignore
     if (wx.getUserProfile) {
       this.setData({
@@ -65,22 +73,32 @@ Page({
       })
     }
   },
+ 
+  onShow(){
+    console.log("onShow");
+    this.handleData();
+    console.log("handleData");
+  },
   handleData(){
+    let weakThis = this;
     try {
       let datas: Topic[] = wx.getStorageSync('topic')
       AppSercive.GlobalTopics = datas;
-      console.log("AppSercive.GlobalTopics==", AppSercive.GlobalTopics);
-      console.log("datas===", datas);
       var learnedDays:{numDays:number, date:number} = wx.getStorageSync("learnedDays");
       console.log("learnedDays==", learnedDays);
+      console.log("learnedDays-typeof==", (typeof learnedDays));
+      
       //处理学习时间
       handleLearnedDate(learnedDays);
+      //处理学习的内容
+      handleLearnedContent(datas);
     } catch {
-
+      
     }
     //处理学习时间
     function handleLearnedDate(learnedDays:{numDays:number, date:number}){
-      if (learnedDays != null){
+
+      if (learnedDays != null ){
         //计算两个时间的时间差.把两个时间转成 number相减 > 0就算新的一天
         let nowTime = new Date(learnedDays.date);
         let oldDateStr = dateFormat(nowTime, "YY-MM-DD")
@@ -97,22 +115,56 @@ Page({
           learnedDays.date = dateStrFormatTimestamp(newDateStr);
           wx.setStorageSync("learnedDays", learnedDays);
           //在这里刷新数据
-          // this.setData({
-          //   laernDays:learnedDays.numDays
-          // });
+          weakThis.setData({
+            laernDays:learnedDays.numDays
+          });
         }
         
       }else{
         let funTest = dateFormat(new Date, "YY-MM-DD")
         let timestamp = dateStrFormatTimestamp(funTest)
         wx.setStorageSync("learnedDays", {numDays:1, date:timestamp});
-        // this.setData({
-        //   laernDays:1
-        // });
+        weakThis.setData({
+          laernDays:1
+        });
       }
+    }
+    //根据学习类型筛选出实际学习题目的数量
+    function handleLearnedContent(datas: Topic[]){
+      let topicType = weakThis.data.menuValue;
+        let newTopic = datas.filter((topic)=>{
+          return (topic.topicType == topicType);
+        });
+        let totalNum = 0;
+        let skilledNum = 0;
+        let unskilledNum = 0;
+        //学习水平 0 没学过,1已学习,2忘记答案
+        newTopic.map((topic)=>{
+          if(topic.levelLearning != 0){
+            totalNum += 1;
+          }
+          if(topic.levelLearning == 1){
+            skilledNum += 1;
+          }
+          if (topic.levelLearning == 2){
+            unskilledNum += 1;
+          }
+        });
+        console.log(`totalNum==${totalNum} \n skilledNum==${skilledNum} \n unskilledNum==${unskilledNum}`);
+        weakThis.setData({
+          totalNum:totalNum,
+          skilledNum:skilledNum,
+          unskilledNum:unskilledNum
+
+        })
+
+
+
+
     }
 
   },
+
   //
   getUserProfile() {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -136,8 +188,11 @@ Page({
     })
   },
   pushToAddPage(){
+    // wx.navigateTo({
+    //   url:"../add/add"
+    // })
     wx.navigateTo({
-      url:"../add/add"
+      url:`../test-page/test-page`
     })
   },
   pushToSearchPage(){
@@ -146,6 +201,8 @@ Page({
     })
   },
   pushToAnswerPage(){
+    console.log("pushToAnswerPage", this.data.menuValue);
+    
     wx.navigateTo({
       url:`../answer/answer?type=${this.data.menuValue}`
     })
@@ -155,6 +212,7 @@ Page({
     this.setData({
       menuValue:ev.detail
     })
+    this.handleData();
     wx.setStorageSync("currentLearnType", ev.detail)
   },
 

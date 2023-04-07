@@ -1,9 +1,9 @@
 /**index.wxss**/
 
 
-.container-image{
+.container-image {
   background: url(../assets/bt_home_bg.png) no-repeat;
-  background-size:100% 100%;
+  background-size: 100% 100%;
 }
 
 .add-type-box {
@@ -13,35 +13,33 @@
   height: 50px;
   line-height: 50px;
 
-  
-  .sub-box{
+
+  .sub-box {
     width: auto;
     display: flex;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.127);
     border-radius: 4px;
     overflow: hidden;
-
-
   }
-  .title{
+
+  .title {
     margin-left: 10px;
-    color:white,
+    color: white,
   }
-  .menu{
-    width: 70px;
+
+  .menu {
     margin-left: 10px;
   }
 }
-
-.type-descriptions{
+.type-descriptions {
   background-color: rgba(0, 0, 255, 0.127);
   color: white;
   margin-top: 35px;
 }
 
 
-.background-shade{
+.background-shade {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.237);
@@ -50,29 +48,35 @@
   align-items: center;
   box-sizing: border-box;
 }
-.home-navigation-bars-title{
+
+.home-navigation-bars-title {
   font-size: 23px;
   font-weight: 800;
-  
+
 }
+
 //
-.home-icon-box{
+.home-icon-box {
   width: 95%;
   margin-top: 50px;
-  .home-icon{
-    width: 30px;height: 30px;
+
+  .home-icon {
+    width: 30px;
+    height: 30px;
     padding: 10px;
     float: right;
-    
+
   }
-  .icon-add{
+
+  .icon-add {
     color: black;
     padding: 5px;
-    width: 35px;height: 35px;
+    width: 35px;
+    height: 35px;
   }
 }
 
-.background-image{
+.background-image {
   height: 100%;
   width: 100%;
 }
@@ -91,26 +95,29 @@
   margin: 20rpx;
   border-radius: 50%;
 }
+
 .usermotto {
   margin-top: 200px;
 }
 
-.home-info-title{
+.home-info-title {
   font-size: 20px;
   padding: 20px;
-  
+
   color: white;
 }
+
 //description
-.home-info-subtitle{
+.home-info-subtitle {
   font-size: 18px;
   padding: 20px;
   color: rgba(255, 255, 255, 0.818);
 }
 
-.start-learn{
+.start-learn {
   margin-top: 100px;
   color: white;
   background-color: rgba(10, 95, 255, 1);
 }
+
 //

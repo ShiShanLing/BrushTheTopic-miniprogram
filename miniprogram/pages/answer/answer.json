@@ -1,8 +1,10 @@
 {
+  
   "navigationStyle": "custom",
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "ssl-audio-paly": "./components/audio-paly/index"
-  }
+  },
+  "disableScroll":true
 }

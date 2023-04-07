@@ -3,6 +3,7 @@ import { Recorder } from "../components/audio-recorder/recorder";
 import { Topic } from "../service/default-datas";
 import Dialog from '@vant/weapp/dialog/dialog';
 import Toast from '@vant/weapp/toast/toast';
+import ToastS from '../../miniprogram_npm/@vant/weapp/toast/toast'
 import { Light } from "XrFrame/components";
 import { AppSercive } from "../service/sercive";
 import { Base64 } from "../tools/general-tools";
@@ -15,7 +16,6 @@ import { Base64 } from "../tools/general-tools";
 忘记答案.跳转到答案查看页面.记录学习一次,不熟练.
 */
 enum RecorderState {
-
   standby,
   //待机状态
   working,
@@ -40,38 +40,65 @@ Page({
     sliderProgress: 0,
     audioInfo: null,
     topic: null,
-    answerType:0,//0语音 1文字
-    textAnswer:"",//用户的text答案
-    allTopic:[] as Topic[],
-    learnType:""
+    answerType: 0,//0语音 1文字
+    textAnswer: "",//用户的text答案
+    allTopic: [] as Topic[],
+    learnType: ""
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(option:any) {
+  onLoad(option: any) {
     console.log("answer-option", option);
 
 
     try {
       let datas: Topic[] = wx.getStorageSync('topic')
-      
-      if (option.type != null && option.type != ""){
-        datas = datas.filter((topic:Topic)=>{
+      let tempTopics:Topic[] = [];
+      if (option.type != null && option.type != "") {
+        tempTopics = datas.filter((topic: Topic) => {
+          console.log("topic.topicType==", topic.topicType, "option.type==", option.type); 
+          
           return topic.topicType == option.type;
         })
         console.log("筛选过后--datas", datas);
-        
       }
+      console.log("全部题目==", datas);
       
-      let result = this.getRandomNum(0, datas.length - 1);
+      let result = this.getRandomNum(0, tempTopics.length - 1);
+      //写一个循环 直到result不是-1 且 tempTopics 不是空
+      while(result == -1 && tempTopics.length != 0){
+        result = this.getRandomNum(0, tempTopics.length - 1);
+      }
+
+      if (tempTopics.length == 0){
+        //
+        ToastS({
+          show: true,
+          type: "",
+          duration: 3000,
+          message: '数据处理出现问题,请稍后再试.',
+          onClose: () => {
+            wx.navigateBack();
+          },
+        })
+
+        return;
+      }
+            
+      
+      console.log("被选中的下标123111==", result);
+      console.log("被选中的题目==", tempTopics);
+      
+
       this.setData({
-        topic: datas[result],
-        allTopic:datas
+        topic: tempTopics[result],
+        allTopic: datas
       })
     } catch {
       console.log("读取数据失败");
-      
+
     }
 
     let weakThis = this;
@@ -87,16 +114,16 @@ Page({
       weakThis.setData({
         recorderState: num
       })
-    }, (audioInfo:any)=>{
+    }, (audioInfo: any) => {
       //录制结束回调
       console.log("audioInfo==", audioInfo);
       weakThis.setData({
-        audioInfo:audioInfo,
+        audioInfo: audioInfo,
       })
     })
     this.setData({
       recorderManager: recorderManager,
-      learnType:option.type
+      learnType: option.type
     })
 
 
@@ -133,14 +160,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    console.log("onPullDownRefresh");
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
+    console.log("onReachBottom");
 
+  },
+  onPageScroll(sv: any) {
+    console.log("onPageScroll====", sv);
+    if (sv.scrollTop != 0 ) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
   },
   /**
    * 用户点击右上角分享
@@ -149,9 +185,9 @@ Page({
 
   },
   //tabs标签栏发生变化时
-  tabsTap(ev:any){
+  tabsTap(ev: any) {
     this.setData({
-      answerType:ev.detail.index
+      answerType: ev.detail.index
     })
     console.log("tabsTap===", ev.detail.index);
   },
@@ -166,7 +202,7 @@ Page({
         weakThis.data.recorderManager.onStartRecorder();
       }
     })
-    
+
   },
   //结束录音
   onStopRecorder() {
@@ -184,7 +220,7 @@ Page({
   textChange(ev: any) {
     console.log("textChange==", ev);
     this.setData({
-      textAnswer:ev.detail.html
+      textAnswer: ev.detail.html
     })
     console.log(this.data.textAnswer);
   },
@@ -194,23 +230,23 @@ Page({
 
     this.refreshTopicState(1, this.data.topic);
     let id = this.data.topic.id;
-    
-    let param = `isVoiceAnswer=${this.data.answerType==0}&isForgetAnswer=false&topic_id=${id}`
 
-    if (this.data.answerType==0){
-      
-      if (this.data.audioInfo!=null){
+    let param = `isVoiceAnswer=${this.data.answerType == 0}&isForgetAnswer=false&topic_id=${id}`
+
+    if (this.data.answerType == 0) {
+
+      if (this.data.audioInfo != null) {
         let voiceAnswer = {
-          duration:(Math.round(this.data.audioInfo.duration)),
-          fileSize:(Math.round(this.data.audioInfo.fileSize)),
-          tempFilePath:this.data.audioInfo.tempFilePath
+          duration: (Math.round(this.data.audioInfo.duration)),
+          fileSize: (Math.round(this.data.audioInfo.fileSize)),
+          tempFilePath: this.data.audioInfo.tempFilePath
         }
         let voiceAnswerStr = JSON.stringify(voiceAnswer);
-        
+
         console.log("voiceAnswerStr==", voiceAnswerStr);
         voiceAnswerStr = Base64.encode(voiceAnswerStr);
         param = param + `&voiceAnswer=${voiceAnswerStr}`
-      }else{
+      } else {
         Dialog.alert({
           title: '温馨提示',
           message: '你还没有录制语音',
@@ -218,11 +254,11 @@ Page({
           // on close
         });
         return;
-      }  
-    }else{
-      if (this.data.textAnswer.length != 0){
+      }
+    } else {
+      if (this.data.textAnswer.length != 0) {
         param = param + `&textAnswer=${this.data.textAnswer}`
-      }else{
+      } else {
         Dialog.alert({
           title: '温馨提示',
           message: '你还没有输入答案...',
@@ -230,13 +266,13 @@ Page({
           // on close
         });
         return;
-      //文字
+        //文字
       }
     }
     // const reg = /\s+/g;
 
     let url = `./sub-pages/check-answer/index?${param}`;
-    
+
     console.log("url转义==", url);
     wx.redirectTo({
       url: url,
@@ -254,33 +290,34 @@ Page({
   goBack() {
     console.log("---------");
     wx.navigateBack();
-    
+
   },
   getRandomNum(min: number, max: number): number {
     var Range = max - min;
     var Rand = Math.random();
+    console.log(`Range==${Range} Rand=${Rand}`);
     return (min + Math.round(Rand * Range));
   },
   /**
    *level 学习水平 0 没学过,1已学习,2忘记答案 
   */
-  refreshTopicState(level:number, topic:Topic){
-      let allTopic = this.data.allTopic;
-      console.log("更改前", allTopic);
-      allTopic.forEach((objc)=>{
-          if (topic.topicTitle  == objc.topicTitle){
-            if (level == 1){
-              objc.learnNum = objc.learnNum + 1;
-            }
-            objc.levelLearning = level;
-          }
-      })
-      console.log("更改后", allTopic);
-      
+  refreshTopicState(level: number, topic: Topic) {
+    let allTopic = this.data.allTopic;
+    console.log("更改前", allTopic);
+    allTopic.forEach((objc) => {
+      if (topic.topicTitle == objc.topicTitle) {
+        if (level == 1) {
+          objc.learnNum = objc.learnNum + 1;
+        }
+        objc.levelLearning = level;
+      }
+    })
+    console.log("更改后", allTopic);
+
     try {
       wx.setStorageSync('topic', allTopic);
     } catch (error) {
-      
+
     }
 
     // try {

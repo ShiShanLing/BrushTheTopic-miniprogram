@@ -11,7 +11,7 @@ App({
     menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
   },
   onLaunch() {
-
+    
     let detail = "rver";
 
 
@@ -48,6 +48,14 @@ App({
   },
 
   DBInit() {
+
+    wx.cloud.init({
+      env: 'cloud1-5g2j8az1a2b084f6'
+    })
+    
+
+   let database = wx.cloud.database()
+
 
     // let dateStr = Date.parse(new Date().toString());
     // console.log("时间戳-----", dateStr);

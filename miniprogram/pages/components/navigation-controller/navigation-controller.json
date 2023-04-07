@@ -2,5 +2,7 @@
   "component": true,
   "usingComponents": {
     "ssl-navigation-bar":"../SSLNavigationBar/ssl-navigation-bar"
-  }
+  
+  },
+  "disableScroll":true
 }

@@ -9,6 +9,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/search/search",
+    "pages/test-page/test-page",
     "pages/add/add",
     "pages/answer/answer",
     "pages/answer/sub-pages/check-answer/index"
@@ -21,4 +22,6 @@
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
+  
+  
 }

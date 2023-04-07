@@ -188,7 +188,7 @@ Page({
   //下一题
   nextAnswer() {
     wx.redirectTo({
-      url: '/pages/answer/answer',
+      url: `/pages/answer/answer?type=${this.data.topic.topicType}`,
     })
   },
   goBack(){

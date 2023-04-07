@@ -1,10 +1,10 @@
 {
+  "component": true,
   "usingComponents": {
-    
     "van-dropdown-item": "@vant/weapp/dropdown-item/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
     "van-field": "@vant/weapp/field/index",
     "van-button": "@vant/weapp/button/index"
-  }
-  
+  },
+  "navigationStyle": "custom"
 }
