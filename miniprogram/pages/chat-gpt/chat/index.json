@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "answer-cell": "./cell/answer-cell/index",
+    "question-cell": "./cell/question-cell/index"
+  },
+  "disableScroll":true
+}

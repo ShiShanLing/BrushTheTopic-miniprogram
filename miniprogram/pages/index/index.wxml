@@ -10,6 +10,10 @@
       <view class="home-icon-box">
         <image capture-bind:tap="pushToSearchPage" class="home-icon" src="../assets/home_search.png"/>
         <image class="home-icon icon-add" capture-bind:tap="pushToAddPage" src="../assets/home_add.png"/>
+        <image class="home-icon icon-add" capture-bind:tap="pushToChatGPTPage" src="../assets/chatgpt-icon.png"/>
+        <image class="home-icon cloud-icon" capture-bind:tap="pushToCloudDevelopPage" src="../assets/cloud-database.png"/>
+
+        
       </view>
       <text class="home-info-title">坚持学习每一天</text>
       <view class="add-type-box">

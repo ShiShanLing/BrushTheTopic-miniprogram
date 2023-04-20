@@ -1,12 +1,12 @@
 // pages/add/add.ts
 
 import { Topic, TopicType } from "../service/default-datas";
-import Dialog from '@vant/weapp/dialog/dialog';
-import Toast from '@vant/weapp/toast/toast';
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
 
-import { Guid } from "/guid-typescript/index";
-import { Text } from "XrFrame/components";
+import { Guid } from "../../miniprogram_npm/guid-typescript/index";
+
 
 
 

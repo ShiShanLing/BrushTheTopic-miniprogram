@@ -10,12 +10,7 @@ import { Topic } from "miniprogram/pages/service/default-datas";
 import { Base64 } from "../../../../pages/tools/general-tools";
 import { AppSercive } from "../../../../pages/service/sercive";
 
-// import { Topic } from "miniprogram/pages/assets/default-datas";
 
-// interface SearchDataTwo {
-//   topicType: string,
-//   topic: Topic[]
-// }
 
 
 Page({
@@ -49,8 +44,6 @@ Page({
    */
   onLoad(option: any) {
     
-
-
 
   console.log(option);
   

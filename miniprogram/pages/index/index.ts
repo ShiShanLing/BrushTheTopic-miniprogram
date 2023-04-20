@@ -4,8 +4,6 @@
 import { Topic, TopicType } from "../service/default-datas";
 import { AppSercive } from "../service/sercive";
 import { dateFormat, dateStrFormatTimestamp } from "../tools/general-tools";
-
-
 const globalApp = getApp()
 
 /*
@@ -40,8 +38,9 @@ Page({
       url: '../logs/logs',
     })
   },
+  //
   onLoad() {
-
+    
     let weakThis = this;
     var topicType:TopicType[] = require('../service/default-datas').topicType;
 
@@ -55,7 +54,7 @@ Page({
     }
     topicType = [{text: "All",value: "",}].concat(topicType);
   
-    console.log("onLoad-topicType==", topicType);
+    // console.log("onLoad-topicType==", topicType);
     this.setData({
       navBarHeight: globalApp.globalData.navBarHeight,
       menuRight: globalApp.globalData.menuRight,
@@ -73,11 +72,11 @@ Page({
       })
     }
   },
- 
+
   onShow(){
-    console.log("onShow");
+    // console.log("onShow");
     this.handleData();
-    console.log("handleData");
+    // console.log("handleData");
   },
   handleData(){
     let weakThis = this;
@@ -85,8 +84,8 @@ Page({
       let datas: Topic[] = wx.getStorageSync('topic')
       AppSercive.GlobalTopics = datas;
       var learnedDays:{numDays:number, date:number} = wx.getStorageSync("learnedDays");
-      console.log("learnedDays==", learnedDays);
-      console.log("learnedDays-typeof==", (typeof learnedDays));
+      // console.log("learnedDays==", learnedDays);
+      // console.log("learnedDays-typeof==", (typeof learnedDays));
       
       //处理学习时间
       handleLearnedDate(learnedDays);
@@ -105,10 +104,10 @@ Page({
         let newDateStr = dateFormat(new Date(), "YY-MM-DD")
         oldDateStr = oldDateStr.replace(/-/g, '')
         newDateStr = newDateStr.replace(/-/g, '')
-        console.log("oldDateStr-", oldDateStr, "newDateStr-", newDateStr);
+        // console.log("oldDateStr-", oldDateStr, "newDateStr-", newDateStr);
         let oldDateNum = Number(oldDateStr);
         let newDateNum = Number(newDateStr);
-        console.log("oldDateNum-", oldDateNum, "newDateNum-", newDateNum);
+        // console.log("oldDateNum-", oldDateNum, "newDateNum-", newDateNum);
         if (newDateNum > oldDateNum){
           //需要计算时间是不是新的一天.然后 numDays + 1
           learnedDays.numDays += 1;
@@ -150,22 +149,17 @@ Page({
             unskilledNum += 1;
           }
         });
-        console.log(`totalNum==${totalNum} \n skilledNum==${skilledNum} \n unskilledNum==${unskilledNum}`);
+        // console.log(`totalNum==${totalNum} \n skilledNum==${skilledNum} \n unskilledNum==${unskilledNum}`);
         weakThis.setData({
           totalNum:totalNum,
           skilledNum:skilledNum,
           unskilledNum:unskilledNum
 
         })
-
-
-
-
+  
     }
 
   },
-
-  //
   getUserProfile() {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
@@ -195,11 +189,25 @@ Page({
       url:`../test-page/test-page`
     })
   },
+  //云开发页面
+  pushToCloudDevelopPage(){
+    wx.navigateTo({
+      url:`../cloud-develop/index`
+    })
+  },
+  //ChatGPT页面
+  pushToChatGPTPage(){
+    wx.navigateTo({
+      url:`../chat-gpt/index`
+    })
+  },
+  //搜索页面
   pushToSearchPage(){
     wx.navigateTo({
       url:`../search/search`
     })
   },
+  //答题页面
   pushToAnswerPage(){
     console.log("pushToAnswerPage", this.data.menuValue);
     
@@ -207,6 +215,7 @@ Page({
       url:`../answer/answer?type=${this.data.menuValue}`
     })
   },
+  
   onDropdownItemChange(ev: any){
     console.log("onDropdownItemChange==", ev.detail)
     this.setData({

@@ -1,6 +1,14 @@
 {
+  "permission": {
+    "scope.userInfo": {
+      "desc": "你的用户信息将用于小程序的个性化体验"
+    },
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
   "usingComponents": {
-    "ssl-audio-paly":"pages/answer/components/audio-paly/index",
+    "ssl-audio-paly": "pages/answer/components/audio-paly/index",
     "navigation-controller": "pages/components/navigation-controller/navigation-controller",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-toast": "@vant/weapp/toast/index"
@@ -12,7 +20,12 @@
     "pages/test-page/test-page",
     "pages/add/add",
     "pages/answer/answer",
-    "pages/answer/sub-pages/check-answer/index"
+    "pages/answer/sub-pages/check-answer/index",
+    "pages/chat-gpt/index",
+    "pages/cloud-develop/index",
+    "pages/chat-gpt/chat/index",
+    "pages/chat-gpt/chat/cell/question-cell/index",
+    "pages/chat-gpt/chat/cell/answer-cell/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +35,4 @@
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
-  
-  
 }

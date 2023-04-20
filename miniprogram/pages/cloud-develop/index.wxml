@@ -1,0 +1,19 @@
+<!--pages/CloudDevelop/index.wxml-->
+<navigation-controller navigationTitle="Cloud Develop" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
+  <!-- 插槽 -->
+  <view slot="before" style="width: 100%;">
+      <button capture-bind:tap="onClick">初始化数据库</button>
+      <button capture-bind:tap="queryData">从数据库获取数据</button>
+      <button capture-bind:tap="addData">数据存储</button>
+      <button capture-bind:tap="onClick">数据删除</button>
+      <button capture-bind:tap="changeData">数据修改</button>
+      <button capture-bind:tap="getUserInfo">获取用户信息</button>
+      <button capture-bind:tap="changeData">新增用户</button>
+      <button capture-bind:tap="cloudFuncAdd">调用云函数 add</button>
+      <button capture-bind:tap="cloudFuncGetOpenid">调用云函数 getOpenid</button>
+      <button capture-bind:tap="cloudFuncChatgpt">调用云函数 chatgpt</button>
+  </view>
+</navigation-controller>
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+

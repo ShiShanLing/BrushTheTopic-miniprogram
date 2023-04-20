@@ -96,7 +96,7 @@ Component({
     recorderManager: wx.getRecorderManager(),
     recorderDuration: 0,
     timer: null,
-    recorderState: RecorderState.standby,
+    recorderState: 0,
     audioInfo: null,
   },
 

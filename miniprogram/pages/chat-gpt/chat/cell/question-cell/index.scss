@@ -1,0 +1,32 @@
+/* pages/chat-gpt/chat/cell/question-cell/index.wxss */
+//最外层
+.cell-content{
+  display: flex;
+  
+  width: 100%;
+  height: auto;
+  //头像 
+  .head{
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+  }
+  //需要动态计算文字宽度??不用
+  .text-box{
+    flex: 1;
+    background-color: white;
+    margin: 15px;
+    margin-right: 40px;
+    padding: 8px 11px;
+
+    border-radius: 4px;
+    .text{
+      font-size: 14px;
+      height: auto;
+      width: auto;
+    }
+  }
+
+}

@@ -15,16 +15,7 @@ import { Base64 } from "../tools/general-tools";
 提交答案,页面分为两种,语音和文字.并展示出原来答案,记录学习了一次,并且熟练
 忘记答案.跳转到答案查看页面.记录学习一次,不熟练.
 */
-enum RecorderState {
-  standby,
-  //待机状态
-  working,
-  //录音中
-  pause,
-  //已暂停
-  end,
-  //已结束
-}
+
 
 
 
@@ -36,7 +27,7 @@ Page({
     recorderManager: null,
     recorderDuration: 0,
     timer: null,
-    recorderState: RecorderState.standby,
+    recorderState: 0,
     sliderProgress: 0,
     audioInfo: null,
     topic: null,
