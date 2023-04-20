@@ -5,7 +5,6 @@
     <view class="grid-container">
       <view class="grid-item" wx:for="{{items}}" wx:key="{{item.id}}" mut-bind:tap="pushToNewPage" data-item_id="{{item.id}}">
         <image class="grid-image" src="{{item.image}}" mode="aspectFill"></image>
-        
         <text class="grid-text"> {{item.title}} </text>
       </view>
     </view>

@@ -1,6 +1,6 @@
 <!--pages/chat-gpt/chat/cell/question-cell/index.wxml-->
 <view class="answer-cell-content">
-  <image class="answer-head" src="../../../../assets/user-head.png"></image>
+  <image class="answer-head" src="../../../../../pages/assets/user-head.png"></image>
   <view class="answer-text-box">
     <view class="answer-text">
       介绍一下你自己介绍一下你自己介绍一下你自己介绍一下你自己介绍一下你自己介绍一下你自己介绍一下你自己介绍一下你自己

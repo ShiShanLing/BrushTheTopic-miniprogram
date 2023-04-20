@@ -36,6 +36,7 @@ Page({
       statsuBarHeight:systemInfo.statusBarHeight,
     })
     this.setChatListHeight();
+    
     wx.onKeyboardHeightChange(res => { //监听键盘高度变化
       console.log("onKeyboardHeightChange=", res);
       
@@ -123,29 +124,11 @@ Page({
       }
     })
 
-    // const messages = this.data.messages;
-    // const inputValue = this.data.inputValue;
-    // console.log("inputValue==", inputValue);
-    
-    // if (inputValue) {
-    //   let temp_id = Guid.create().toString();
-    //   messages.push({
-    //     id: temp_id,
-    //     type: 'sent',
-    //     content: inputValue
-    //   });
-
-    //   this.setData({
-    //     messages: messages,
-    //     inputValue: '',
-    //     scrollIntoView: 'message-' + (messages.length - 1)
-    //   });
-    // }
   },
   setChatListHeight() {
-    this.setData({
-      chatListHeight: app.globalData.sysHeight - app.globalData.statsuBarHeight - this.data.headHeight - this.data.keyboardHeight- this.data.inutPanelHeight
-    })
+    // this.setData({
+    //   chatListHeight: app.globalData.sysHeight - app.globalData.statsuBarHeight - this.data.headHeight - this.data.keyboardHeight- this.data.inutPanelHeight
+    // })
   },
   hideKeyboard(){
     wx.hideKeyboard();

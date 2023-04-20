@@ -16,8 +16,8 @@
   "compileType": "miniprogram",
   "projectname": "ts-sass-demo",
   "setting": {
-    "ignoreDevUnusedFiles": false,
-    "ignoreUploadUnusedFiles": false,
+    "ignoreDevUnusedFiles": true,
+    "ignoreUploadUnusedFiles": true,
     "useCompilerPlugins": [
       "typescript",
       "sass"

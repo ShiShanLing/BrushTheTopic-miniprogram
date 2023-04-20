@@ -192,13 +192,13 @@ Page({
   //云开发页面
   pushToCloudDevelopPage(){
     wx.navigateTo({
-      url:`../cloud-develop/index`
+      url:`../../pages-chatgpt/cloud-develop/index`
     })
   },
   //ChatGPT页面
   pushToChatGPTPage(){
     wx.navigateTo({
-      url:`../chat-gpt/index`
+      url:`../../pages-chatgpt/chat-gpt/index`
     })
   },
   //搜索页面

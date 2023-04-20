@@ -20,12 +20,20 @@
     "pages/test-page/test-page",
     "pages/add/add",
     "pages/answer/answer",
-    "pages/answer/sub-pages/check-answer/index",
-    "pages/chat-gpt/index",
-    "pages/cloud-develop/index",
-    "pages/chat-gpt/chat/index",
-    "pages/chat-gpt/chat/cell/question-cell/index",
-    "pages/chat-gpt/chat/cell/answer-cell/index"
+    "pages/answer/sub-pages/check-answer/index"
+  ],
+  "subpackages": [
+    {
+      "root": "pages-chatgpt",
+      "name": "chatgpt",
+      "pages": [
+        "chat-gpt/index",
+        "chat-gpt/chat/index",
+        "chat-gpt/chat/cell/question-cell/index",
+        "chat-gpt/chat/cell/answer-cell/index",
+        "cloud-develop/index"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,4 +43,5 @@
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
+  
 }
