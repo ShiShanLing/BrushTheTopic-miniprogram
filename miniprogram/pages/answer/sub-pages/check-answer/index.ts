@@ -60,7 +60,7 @@ Page({
     console.log("option.topic==", decodeTopic);
 
     let topic:Topic|undefined = undefined;
-
+    
     AppSercive.GlobalTopics.forEach(element => {
       if (element.id == option.topic_id){
         topic = element;
@@ -172,7 +172,7 @@ Page({
       wx.createSelectorQuery().select('#referAnswerEditor').context(function (res) {
         if (res){
           res.context.setContents({
-            html: weakThis.data.topic.topicAnswer
+            html: weakThis.data.topic?.topicAnswer
           });
         }
       }).exec()
@@ -181,7 +181,7 @@ Page({
   //下一题
   nextAnswer() {
     wx.redirectTo({
-      url: `/pages/answer/answer?type=${this.data.topic.topicType}`,
+      url: `/pages/answer/answer?type=${this.data.topic?.topicType}`,
     })
   },
   goBack(){

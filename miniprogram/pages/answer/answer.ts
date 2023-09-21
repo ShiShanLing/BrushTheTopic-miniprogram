@@ -4,10 +4,10 @@ import { Topic } from "../service/default-datas";
 import Dialog from '@vant/weapp/dialog/dialog';
 import Toast from '@vant/weapp/toast/toast';
 import ToastS from '../../miniprogram_npm/@vant/weapp/toast/toast'
-import { Light } from "XrFrame/components";
-import { AppSercive } from "../service/sercive";
+
 import { Base64 } from "../tools/general-tools";
 /*
+
 页面基本逻辑.
 每次进入到这个页面都要刷新一道题
 提交答案时.
@@ -34,7 +34,9 @@ Page({
     answerType: 0,//0语音 1文字
     textAnswer: "",//用户的text答案
     allTopic: [] as Topic[],
+
     learnType: ""
+    
 
   },
   /**
@@ -54,6 +56,8 @@ Page({
           return topic.topicType == option.type;
         })
         console.log("筛选过后--datas", datas);
+      }else{
+        tempTopics = datas;
       }
       console.log("全部题目==", datas);
       
@@ -190,14 +194,14 @@ Page({
       scope: 'scope.record',
       success() {
         // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-        weakThis.data.recorderManager.onStartRecorder();
+        weakThis.data.recorderManager?.onStartRecorder();
       }
     })
 
   },
   //结束录音
   onStopRecorder() {
-    this.data.recorderManager.onStopRecorder();
+    this.data.recorderManager?.onStopRecorder();
   },
   //暂停录音
   onPauseRecorder() {
@@ -228,16 +232,18 @@ Page({
 
       if (this.data.audioInfo != null) {
         let voiceAnswer = {
-          duration: (Math.round(this.data.audioInfo.duration)),
-          fileSize: (Math.round(this.data.audioInfo.fileSize)),
-          tempFilePath: this.data.audioInfo.tempFilePath
+          duration: (Math.round(this.data.audioInfo?.duration)),
+          fileSize: (Math.round(this.data.audioInfo?.fileSize)),
+          tempFilePath: this.data.audioInfo?.tempFilePath
         }
         let voiceAnswerStr = JSON.stringify(voiceAnswer);
-
+        //很多公司
         console.log("voiceAnswerStr==", voiceAnswerStr);
         voiceAnswerStr = Base64.encode(voiceAnswerStr);
         param = param + `&voiceAnswer=${voiceAnswerStr}`
       } else {
+        /*
+        */
         Dialog.alert({
           title: '温馨提示',
           message: '你还没有录制语音',

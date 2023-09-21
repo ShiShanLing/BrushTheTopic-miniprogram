@@ -30,6 +30,9 @@ Page({
     totalNum : 0,
     skilledNum : 0,
     unskilledNum : 0,
+    touchstart:0,
+    touchend:0,
+    isShowChatGPT:false
 
   },
   // 事件处理函数
@@ -40,11 +43,15 @@ Page({
   },
   //
   onLoad() {
-    
     let weakThis = this;
     var topicType:TopicType[] = require('../service/default-datas').topicType;
 
     let menuValue = "";
+
+    let str = "PMGEP";
+    for(let i = 0; i<str.length;i++ ){
+
+    }
 
     try {
       //如果存储过 那么就取出来
@@ -72,7 +79,6 @@ Page({
       })
     }
   },
-
   onShow(){
     // console.log("onShow");
     this.handleData();
@@ -210,12 +216,10 @@ Page({
   //答题页面
   pushToAnswerPage(){
     console.log("pushToAnswerPage", this.data.menuValue);
-    
     wx.navigateTo({
       url:`../answer/answer?type=${this.data.menuValue}`
     })
   },
-  
   onDropdownItemChange(ev: any){
     console.log("onDropdownItemChange==", ev.detail)
     this.setData({
@@ -224,5 +228,21 @@ Page({
     this.handleData();
     wx.setStorageSync("currentLearnType", ev.detail)
   },
+  searchTouchstart(e:any){
+    this.setData({
+      touchstart:e.timeStamp
+    })
+  },
+  searchTouchend(e:any){
+
+    let touchend = e.timeStamp;
+    if((touchend-this.data.touchstart)>=2000){  /*长按三秒*/
+      this.setData({
+        touchstart:0,
+        isShowChatGPT:true
+      })
+    }
+
+  }
 
 })

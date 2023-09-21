@@ -1,34 +1,46 @@
 /* pages/chat-gpt/chat/cell/question-cell/index.wxss */
 //最外层
-.answer-cell-content{
-  display: flex;
-  flex-direction: row-reverse;
+
+
+.cell-content{
+  display: inline-flex;
+  box-sizing: border-box;
+  flex-direction: row;
   width: 100%;
   height: auto;
+
+  van-loading {
+    
+    margin-top: 20px;
+    margin-left: 25px;
+  }
   //头像 
-  .answer-head{
-    float: right;
+  .head{
+    flex-shrink:0;
     margin-top: 15px;
-    margin-right: 10px;
+    margin-left: 10px;
     width: 40px;
     height: 40px;
     border-radius: 4px;
   }
+
+
   //需要动态计算文字宽度??不用
-  .answer-text-box{
-    flex: 1;
-    float: right;
+  .text-box{
+    
     background-color: white;
-    width: auto;
     margin: 15px;
-    margin-left: 40px;
+    margin-right: 40px;
     padding: 8px 11px;
+
     border-radius: 4px;
-    .answer-text{
+    .text{
       font-size: 14px;
       height: auto;
-      width: auto;
+      width: 100%;
     }
   }
+
+
 
 }

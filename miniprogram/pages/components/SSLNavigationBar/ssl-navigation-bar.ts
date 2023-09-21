@@ -33,7 +33,7 @@ Component({
    */
   methods: {
     goBack() {
-      this.properties.funcs();
+      // this.properties.funcs();
       console.log("点击了返回");
       this.triggerEvent('goBack');
     }

@@ -1,9 +1,52 @@
 <navigation-controller navigationTitle="查看答案" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
   <!-- 插槽 -->
   <view slot="before" style="width: 100%;">
-    <text class="issue">{{topic.topicTitle}}</text>
     
-    <!-- 如果是忘记答案 -->
+    <view class="container-box">
+      <view class="topic-type">{{topic.topicType}}</view>
+      <text class="issue">{{topic.topicTitle}}</text>
+    </view>
+    <!--如果是忘记答案
+    preferable
+    cope
+    complicated
+    frequent 
+    vaild 有事实依据的有法律效益的
+    indeed  确实 的确 实际上 真正的
+    philosophy   哲学
+    religion 信仰 
+    practise  练习,实践,从事.
+    intensity 紧张 强烈
+    gold 黄金
+    reference  提及 参考 引用
+    respectively  个别的 分别的
+    moment 片刻 瞬间 
+    hide 兽皮 隐藏
+    evlove 发展 进化 
+    idiom  方言 
+    place  地方 位置
+    conservative 守旧的 保守的 有守护能力的
+    whoever 任何人
+    road 路
+    camp  露营 帐篷
+    neighborhood 附近 邻近
+    stablilty  安稳 安定
+    silence  静寂 无声
+    bat 棒球 蝙蝠
+    departure 出发 离站,
+    conclude  结论 推论
+    politics 政治 政治学,
+    assistant 助手助教
+    chemistry  化学反应
+    proceed  继续进行 进行 开始 起诉
+    refer  提交
+    necessarily  必定的 必然的 不要的
+    increase  增长
+    broadcase 广播
+
+  
+
+    -->
     <view wx:if="{{isForgetAnswer==true}}">
       <view class="yours-answer-box">
         <view class="yours-title refer-answer-title-shadow" style="color:green;">
@@ -20,8 +63,6 @@
     <!-- 如果没有忘记答案 -->
     <view wx:else style="width: 100%;">
       <!-- 如果是语音回答 -->
-
-      
       <view wx:if="{{ isVoiceAnswer == true }}" class="audio-paly-box">
         <ssl-audio-paly  duration="{{voiceAnswer.duration}}" fileSize="{{voiceAnswer.fileSize}}" tempFilePath="{{voiceAnswer.tempFilePath}}"></ssl-audio-paly>
       </view>

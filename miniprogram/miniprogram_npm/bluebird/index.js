@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1681872938646, function(require, module, exports) {
+__DEFINE__(1683183298684, function(require, module, exports) {
 
 var old;
 if (typeof Promise !== "undefined") old = Promise;
@@ -17,8 +17,8 @@ var bluebird = require("./promise")();
 bluebird.noConflict = noConflict;
 module.exports = bluebird;
 
-}, function(modId) {var map = {"./promise":1681872938647}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938647, function(require, module, exports) {
+}, function(modId) {var map = {"./promise":1683183298685}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298685, function(require, module, exports) {
 
 module.exports = function() {
 var makeSelfResolutionError = function () {
@@ -839,8 +839,8 @@ require('./filter.js')(Promise, INTERNAL);
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./es5":1681872938649,"./async":1681872938650,"./errors":1681872938653,"./thenables":1681872938654,"./promise_array":1681872938655,"./context":1681872938656,"./debuggability":1681872938657,"./finally":1681872938658,"./catch_filter":1681872938659,"./nodeback":1681872938660,"./method":1681872938661,"./bind":1681872938662,"./cancel":1681872938663,"./direct_resolve":1681872938664,"./synchronous_inspection":1681872938665,"./join":1681872938666,"./call_get.js":1681872938667,"./generators.js":1681872938668,"./map.js":1681872938669,"./nodeify.js":1681872938670,"./promisify.js":1681872938671,"./props.js":1681872938672,"./race.js":1681872938673,"./reduce.js":1681872938674,"./settle.js":1681872938675,"./some.js":1681872938676,"./timers.js":1681872938677,"./using.js":1681872938678,"./any.js":1681872938679,"./each.js":1681872938680,"./filter.js":1681872938681}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938648, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./es5":1683183298687,"./async":1683183298688,"./errors":1683183298691,"./thenables":1683183298692,"./promise_array":1683183298693,"./context":1683183298694,"./debuggability":1683183298695,"./finally":1683183298696,"./catch_filter":1683183298697,"./nodeback":1683183298698,"./method":1683183298699,"./bind":1683183298700,"./cancel":1683183298701,"./direct_resolve":1683183298702,"./synchronous_inspection":1683183298703,"./join":1683183298704,"./call_get.js":1683183298705,"./generators.js":1683183298706,"./map.js":1683183298707,"./nodeify.js":1683183298708,"./promisify.js":1683183298709,"./props.js":1683183298710,"./race.js":1683183298711,"./reduce.js":1683183298712,"./settle.js":1683183298713,"./some.js":1683183298714,"./timers.js":1683183298715,"./using.js":1683183298716,"./any.js":1683183298717,"./each.js":1683183298718,"./filter.js":1683183298719}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298686, function(require, module, exports) {
 
 var es5 = require("./es5");
 var canEvaluate = typeof navigator == "undefined";
@@ -1263,8 +1263,8 @@ if (ret.isNode) ret.toFastProperties(process);
 try {throw new Error(); } catch (e) {ret.lastLineError = e;}
 module.exports = ret;
 
-}, function(modId) { var map = {"./es5":1681872938649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938649, function(require, module, exports) {
+}, function(modId) { var map = {"./es5":1683183298687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298687, function(require, module, exports) {
 var isES5 = (function(){
     
     return this === undefined;
@@ -1347,7 +1347,7 @@ if (isES5) {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938650, function(require, module, exports) {
+__DEFINE__(1683183298688, function(require, module, exports) {
 
 var firstLineError;
 try {throw new Error(); } catch (e) {firstLineError = e;}
@@ -1469,8 +1469,8 @@ Async.prototype._reset = function () {
 module.exports = Async;
 module.exports.firstLineError = firstLineError;
 
-}, function(modId) { var map = {"./schedule":1681872938651,"./queue":1681872938652}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938651, function(require, module, exports) {
+}, function(modId) { var map = {"./schedule":1683183298689,"./queue":1683183298690}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298689, function(require, module, exports) {
 
 var util = require("./util");
 var schedule;
@@ -1534,8 +1534,8 @@ if (util.isNode && typeof MutationObserver === "undefined") {
 }
 module.exports = schedule;
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938652, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298690, function(require, module, exports) {
 
 function arrayMove(src, srcIndex, dst, dstIndex, len) {
     for (var j = 0; j < len; ++j) {
@@ -1611,7 +1611,7 @@ Queue.prototype._resizeTo = function (capacity) {
 module.exports = Queue;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938653, function(require, module, exports) {
+__DEFINE__(1683183298691, function(require, module, exports) {
 
 var es5 = require("./es5");
 var Objectfreeze = es5.freeze;
@@ -1729,8 +1729,8 @@ module.exports = {
     Warning: Warning
 };
 
-}, function(modId) { var map = {"./es5":1681872938649,"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938654, function(require, module, exports) {
+}, function(modId) { var map = {"./es5":1683183298687,"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298692, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL) {
 var util = require("./util");
@@ -1818,8 +1818,8 @@ function doThenable(x, then, context) {
 return tryConvertToPromise;
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938655, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298693, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL, tryConvertToPromise,
     apiRejection, Proxyable) {
@@ -2007,8 +2007,8 @@ PromiseArray.prototype.getActualLength = function (len) {
 return PromiseArray;
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938656, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298694, function(require, module, exports) {
 
 module.exports = function(Promise) {
 var longStackTraces = false;
@@ -2080,7 +2080,7 @@ return Context;
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938657, function(require, module, exports) {
+__DEFINE__(1683183298695, function(require, module, exports) {
 
 module.exports = function(Promise, Context,
     enableAsyncHooks, disableAsyncHooks) {
@@ -3091,8 +3091,8 @@ return {
 };
 };
 
-}, function(modId) { var map = {"./errors":1681872938653,"./util":1681872938648,"./es5":1681872938649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938658, function(require, module, exports) {
+}, function(modId) { var map = {"./errors":1683183298691,"./util":1683183298686,"./es5":1683183298687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298696, function(require, module, exports) {
 
 module.exports = function(Promise, tryConvertToPromise, NEXT_FILTER) {
 var util = require("./util");
@@ -3240,8 +3240,8 @@ Promise.prototype.tapCatch = function (handlerOrPredicate) {
 return PassThroughHandlerContext;
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./catch_filter":1681872938659}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938659, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./catch_filter":1683183298697}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298697, function(require, module, exports) {
 
 module.exports = function(NEXT_FILTER) {
 var util = require("./util");
@@ -3285,8 +3285,8 @@ function catchFilter(instances, cb, promise) {
 return catchFilter;
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./es5":1681872938649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938660, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./es5":1683183298687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298698, function(require, module, exports) {
 
 var util = require("./util");
 var maybeWrapAsError = util.maybeWrapAsError;
@@ -3339,8 +3339,8 @@ function nodebackForPromise(promise, multiArgs) {
 
 module.exports = nodebackForPromise;
 
-}, function(modId) { var map = {"./util":1681872938648,"./errors":1681872938653,"./es5":1681872938649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938661, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./errors":1683183298691,"./es5":1683183298687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298699, function(require, module, exports) {
 
 module.exports =
 function(Promise, INTERNAL, tryConvertToPromise, apiRejection, debug) {
@@ -3397,8 +3397,8 @@ Promise.prototype._resolveFromSyncValue = function (value) {
 };
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938662, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298700, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL, tryConvertToPromise, debug) {
 var calledBind = false;
@@ -3468,7 +3468,7 @@ Promise.bind = function (thisArg, value) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938663, function(require, module, exports) {
+__DEFINE__(1683183298701, function(require, module, exports) {
 
 module.exports = function(Promise, PromiseArray, apiRejection, debug) {
 var util = require("./util");
@@ -3599,8 +3599,8 @@ Promise.prototype._resultCancelled = function() {
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938664, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298702, function(require, module, exports) {
 
 module.exports = function(Promise) {
 function returner() {
@@ -3649,7 +3649,7 @@ Promise.prototype.catchReturn = function (value) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938665, function(require, module, exports) {
+__DEFINE__(1683183298703, function(require, module, exports) {
 
 module.exports = function(Promise) {
 function PromiseInspection(promise) {
@@ -3755,7 +3755,7 @@ Promise.PromiseInspection = PromiseInspection;
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938666, function(require, module, exports) {
+__DEFINE__(1683183298704, function(require, module, exports) {
 
 module.exports =
 function(Promise, PromiseArray, tryConvertToPromise, INTERNAL, async) {
@@ -3922,8 +3922,8 @@ Promise.join = function () {
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938667, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298705, function(require, module, exports) {
 
 var cr = Object.create;
 if (cr) {
@@ -4048,8 +4048,8 @@ Promise.prototype.get = function (propertyName) {
 };
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938668, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298706, function(require, module, exports) {
 
 module.exports = function(Promise,
                           apiRejection,
@@ -4274,8 +4274,8 @@ Promise.spawn = function (generatorFunction) {
 };
 };
 
-}, function(modId) { var map = {"./errors":1681872938653,"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938669, function(require, module, exports) {
+}, function(modId) { var map = {"./errors":1683183298691,"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298707, function(require, module, exports) {
 
 module.exports = function(Promise,
                           PromiseArray,
@@ -4452,8 +4452,8 @@ Promise.map = function (promises, fn, options, _filter) {
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938670, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298708, function(require, module, exports) {
 
 module.exports = function(Promise) {
 var util = require("./util");
@@ -4513,8 +4513,8 @@ Promise.prototype.asCallback = Promise.prototype.nodeify = function (nodeback,
 };
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938671, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298709, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL) {
 var THIS = {};
@@ -4830,8 +4830,8 @@ Promise.promisifyAll = function (target, options) {
 };
 
 
-}, function(modId) { var map = {"./util":1681872938648,"./nodeback":1681872938660,"./errors":1681872938653}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938672, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./nodeback":1683183298698,"./errors":1683183298691}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298710, function(require, module, exports) {
 
 module.exports = function(
     Promise, PromiseArray, tryConvertToPromise, apiRejection) {
@@ -4951,8 +4951,8 @@ Promise.props = function (promises) {
 };
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./es5":1681872938649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938673, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./es5":1683183298687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298711, function(require, module, exports) {
 
 module.exports = function(
     Promise, INTERNAL, tryConvertToPromise, apiRejection) {
@@ -5003,8 +5003,8 @@ Promise.prototype.race = function () {
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938674, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298712, function(require, module, exports) {
 
 module.exports = function(Promise,
                           PromiseArray,
@@ -5189,8 +5189,8 @@ function gotValue(value) {
 }
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938675, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298713, function(require, module, exports) {
 
 module.exports =
     function(Promise, PromiseArray, debug) {
@@ -5239,8 +5239,8 @@ Promise.prototype.settle = function () {
 };
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938676, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298714, function(require, module, exports) {
 
 module.exports =
 function(Promise, PromiseArray, apiRejection) {
@@ -5390,8 +5390,8 @@ Promise.prototype.some = function (howMany) {
 Promise._SomePromiseArray = SomePromiseArray;
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./errors":1681872938653}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938677, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./errors":1683183298691}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298715, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL, debug) {
 var util = require("./util");
@@ -5486,8 +5486,8 @@ Promise.prototype.timeout = function (ms, message) {
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938678, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298716, function(require, module, exports) {
 
 module.exports = function (Promise, apiRejection, tryConvertToPromise,
     createContext, INTERNAL, debug) {
@@ -5715,8 +5715,8 @@ module.exports = function (Promise, apiRejection, tryConvertToPromise,
 
 };
 
-}, function(modId) { var map = {"./util":1681872938648,"./errors":1681872938653}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938679, function(require, module, exports) {
+}, function(modId) { var map = {"./util":1683183298686,"./errors":1683183298691}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1683183298717, function(require, module, exports) {
 
 module.exports = function(Promise) {
 var SomePromiseArray = Promise._SomePromiseArray;
@@ -5740,7 +5740,7 @@ Promise.prototype.any = function () {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938680, function(require, module, exports) {
+__DEFINE__(1683183298718, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL) {
 var PromiseReduce = Promise.reduce;
@@ -5773,7 +5773,7 @@ Promise.mapSeries = PromiseMapSeries;
 
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1681872938681, function(require, module, exports) {
+__DEFINE__(1683183298719, function(require, module, exports) {
 
 module.exports = function(Promise, INTERNAL) {
 var PromiseMap = Promise.map;
@@ -5788,7 +5788,7 @@ Promise.filter = function (promises, fn, options) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1681872938646);
+return __REQUIRE__(1683183298684);
 })()
 //miniprogram-npm-outsideDeps=["async_hooks"]
 //# sourceMappingURL=index.js.map

@@ -13,24 +13,30 @@ exports.main = async (event, context) => {
   const apiKey = event.apiKey;
   // 构造请求参数
   const prompt = event.prompt;
-  let requestBody = {
-    "apiKey":apiKey,
-    "prompt":prompt
+  
+  const temperature = 0;
+  if (event.temperature){
+    temperature = event.temperature;
   }
 
+  let requestBody = {
+    "apiKey":apiKey,
+    "prompt":prompt,
+    temperature:temperature
+  }
   try {
     const response = await axios.post(apiUrl, requestBody);
     console.log("网络请求成功==", response);
     return {
       statusCode: 200,
-      body: {"msg":"获取成功", "requestBody":requestBody,"keys":response},
+      body: {"msg":"获取成功","keys":response.data.keys},
     }
   } catch (error) {
     console.log("网络请求失败");
     return {
       statusCode: 999,
       msg:"网络请求失败",
-      body: {"msg":"获取失败 ","keys":"","error":error, "requestBody":requestBody},
+      body: {"msg":"获取失败 ","keys":"","error":error},
   };
   }
 

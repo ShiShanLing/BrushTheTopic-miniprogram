@@ -1,14 +1,34 @@
 <!--pages/chat-gpt/chat/index.wxml-->
 <navigation-controller navigationTitle="ChatGPT" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
   <!-- 插槽 -->
-  <view slot="before" style="width: 100%;">
-    <question-cell></question-cell>
-    <answer-cell></answer-cell>
+  <view slot="before" style="width: 100%">
+    <!-- 需要设置一个maxHeight -->
 
-    <view class="input-panel" style="bottom:{{keyboardHeight}}px">
-      <input adjust-position="{{false}}" hold-keyboard="{{true}}" bindinput="getInput" value="{{curMessage}}" />
-      <view class="send-btn" bindtap="send">发送</view>
+    <view class="chat-container-box" 
+    style="height: {{svChangeHeight}}px;">
+
+      <scroll-view id="scroll-view" 
+      scroll-y="true"  
+      style="height: {{svChangeHeight-50}}px;" 
+      scroll-into-view="{{scrollIntoView}}">
+        <view wx:for="{{messages}}" wx:for-index="index" wx:for-item="msgItem" wx:key="index">
+          <question-cell wx:if="{{msgItem.type == 'Q'}}" id="{{msgItem.id}}" showText="{{msgItem.content}}"></question-cell>
+          <answer-cell wx:if="{{msgItem.type == 'A'}}" id="{{msgItem.id}}" isWaiting="{{msgItem.state==0?true:false}}" showText="{{msgItem.content}}"></answer-cell>
+        </view>
+        
+      </scroll-view>
+
+      <view class="input-panel" style="bottom:{{0}}px">
+        <input adjust-position="{{false}}" hold-keyboard="{{true}}" bindinput="getInput" value="{{curMessage}}" />
+        <button class="send-btn" capture-catch:tap="onSend"> 发送 </button>
+      </view>
     </view>
+
+
+
+
+
+
 
 
   </view>

@@ -37,7 +37,8 @@ export function dateFormat(date:Date, option:string):string {
   if (option == 'YY-MM-DD') return [year, month, day].map(formatNumber).join('-')
   //获取 年月
   if (option == 'YY-MM') return [year, month].map(formatNumber).join('-')
-
+    //获取 月日
+    if (option == 'MM-DD') return [month, day].map(formatNumber).join('-')
   //获取 年
   if (option == 'YY') return [year].map(formatNumber).toString()
 

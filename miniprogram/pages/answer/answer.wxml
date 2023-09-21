@@ -2,8 +2,9 @@
 <navigation-controller navigationTitle="开始答题" isHideBackButton="" backgroundColor="rgb(242, 242, 242)" bind:goBack="goBack">
   <!-- 插槽 -->
   <view slot="before" style="width: 100%;">
-
+    
     <view class="container-box">
+      <view class="topic-type">{{topic.topicType}}</view>
       <text class="issue">{{topic.topicTitle}}</text>
     </view>
     <van-tabs bind:click='tabsTap' type="card">

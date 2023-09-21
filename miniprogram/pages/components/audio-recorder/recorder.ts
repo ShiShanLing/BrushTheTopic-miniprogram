@@ -1,11 +1,4 @@
-
-
-
-
-/*
-
-*/
-
+import { RED } from "miniprogram/miniprogram_npm/@vant/weapp/common/color";
 import { ConcretePublisher, subscriberEventBus } from "../../service/subscriber";
 
 export class Recorder {
@@ -20,7 +13,6 @@ export class Recorder {
   */
   recorderState = 0;
   audioInfo = null;
-
 
   //正在录音 需要传递录制时间
   recordingTimeBlock: (num: number) => void;
@@ -83,7 +75,6 @@ export class Recorder {
       }
       this.recorderState = 3;
 
-
       this.recordingEnd(res);
 
       console.log("onStop==", res.duration);
@@ -91,7 +82,7 @@ export class Recorder {
       weakThis.timer = null;
       //重置状态为未开始
       this.recorderDuration = 0;
-
+      
     })
     this.recorderManager.onFrameRecorded((res) => {
       const { frameBuffer } = res
@@ -99,15 +90,16 @@ export class Recorder {
     })
     this.recorderManager.onError((res) => {
       console.log("---录音出现错误---", res);
+      //
     })
   }
 
 
-  //开录音
+  //开录音 
   onStartRecorder() {
     console.log("你点击了开始录音");
-
-    //开始录音
+    
+    //开始录音  rgb(26, 29, 34)
     this.audioInfo = null;
     console.log("this.recorderManager==", this.recorderManager);
     const options = {
@@ -125,7 +117,7 @@ export class Recorder {
   onStopRecorder() {
     console.log("你点击了结束录音");
     this.recorderManager.stop();
-
+    //根据我的印象(可能印象来自于国内外新闻),没有比中国人地位低的人,
   };
   //暂停录音
   onPauseRecorder() {

@@ -1,9 +1,34 @@
 /* pages/chat-gpt/chat/index.wxss */
 
+.chat-container-box{
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+
+  .input-panel {
+    bottom: 0px;
+    display: flex;
+    background: #dddddd;
+    height: 50px;
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    width:100%;
+    padding:0px 10px;
+    align-items: center;
+    box-sizing: border-box;
+  }
+}
+
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  
+  overflow: hidden;
 }
 
 .chat-message {
@@ -25,16 +50,7 @@
 }
 
 
-.input-panel {
-  display: flex;
-  background: #dddddd;
-  height: 50px;
-  position: fixed;
-  width:100%;
-  padding:0px 10px;
-  align-items: center;
-  box-sizing: border-box;
-}
+
  
 .input-panel input {
   flex: 1;

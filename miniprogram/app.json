@@ -29,8 +29,6 @@
       "pages": [
         "chat-gpt/index",
         "chat-gpt/chat/index",
-        "chat-gpt/chat/cell/question-cell/index",
-        "chat-gpt/chat/cell/answer-cell/index",
         "cloud-develop/index"
       ]
     }

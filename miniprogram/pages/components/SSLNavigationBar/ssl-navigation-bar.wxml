@@ -3,5 +3,6 @@
   <image wx:if="{{isHideBackButton != true}}" class="return-button" capture-bind:tap="goBack" src="/pages/assets/go-back.png"></image>
   <text class="navigation-title" style="padding-top: {{menuTop}}px;height: {{menuHeight}}px;">
     <text>{{title}}</text>
+    <!--  -->
   </text>
 </view>

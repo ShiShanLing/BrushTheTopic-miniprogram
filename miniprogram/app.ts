@@ -9,19 +9,18 @@ App({
     menuRight: 0, // 胶囊距右方间距（方保持左、右间距一致）
     menuTop: 0, // 胶囊距底部间距（保持底部间距一致）
     menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
+    screenHeight:0,
   },
   onLaunch() {
     const that = this;
     // 获取系统信息
     const systemInfo = wx.getSystemInfoSync();
-    
-
     // 胶囊按钮位置信息
     const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
     // 导航栏高度 = 状态栏高度 + 44
     that.globalData.navBarHeight = systemInfo.statusBarHeight + 44;
     that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
-
+    that.globalData.screenHeight = systemInfo.screenHeight;
     that.globalData.menuTop = menuButtonInfo.top;
     that.globalData.menuHeight = menuButtonInfo.height;
     //展示本地存储能力,
@@ -29,9 +28,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     //初始化本地数据库
-    this.DBInit();
+    // this.DBInit();
     //初始化云开发
-    this.clouldInit();
+    // this.clouldInit();
     // 登录
     wx.login({
       success: res => {
@@ -42,14 +41,6 @@ App({
   },
 
   DBInit() {
-
-    wx.cloud.init({
-      env: 'cloud1-5g2j8az1a2b084f6'
-    })
-    
-
-   let database = wx.cloud.database()
-
 
     // let dateStr = Date.parse(new Date().toString());
     // console.log("时间戳-----", dateStr);
@@ -81,11 +72,7 @@ App({
           wx.setStorageSync("DatabasesVersions", AppCurrentVersions);
           console.log("更新版本号----");
           
-          //做一些版本更新的工作,如果没工作可以不调用.
-          if (AppCurrentVersions == "1.0.2") {
-            //只有1.0.2版本才调用这个 后面版本可以删除.
-            versionsUpdate();
-          }
+
         }
       } else {
         wx.setStorageSync("DatabasesVersions", AppCurrentVersions);
@@ -95,15 +82,7 @@ App({
     } catch (error) {
 
     }
-    //版本更新需要处理的代码
-    function versionsUpdate() {
-      try {
-        wx.removeStorageSync("topic");
-        console.log("开始清理数据库");
-      } catch (error) {
 
-      }
-    }
 
     try {
       var isStorage = wx.getStorageSync('isStorage')
@@ -111,10 +90,10 @@ App({
       if (isStorage != true || topics.length == 0) {
         wx.setStorageSync("isStorage", true);
         let tempDatas: Topic[] = require('./pages/service/default-datas').dataJson;
-        // console.log("DBInit-准备存进去==", tempDatas);
+        console.log("DBInit-准备存进去==", tempDatas);
         wx.setStorageSync("topic", tempDatas);
       } else {
-        // console.log("已经存进去了", wx.getStorageSync('topic'));
+        console.log("已经存进去了", wx.getStorageSync('topic'));
       }
 
     } catch (e) {

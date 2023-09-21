@@ -33,10 +33,6 @@ export class ConcreteEventChannel implements EventChannel {
     this.subjects[subscriber].push(callback);
   };
   //
-
-
-
-
   // 实现取消订阅事件
   public off(subscriber: string, callback: () => void): void {
     console.log(`收到取消订阅请求，需要取消的订阅事件：${subscriber}`);
@@ -62,7 +58,7 @@ export class ConcretePublisher implements Publisher {
     console.log("ConcretePublisher---");
 
     this.subscriber = subscriber;
-    this.data = data;
+    this.data = data; 
   }
 }
 //订阅者实现

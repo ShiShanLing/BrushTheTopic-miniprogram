@@ -1,9 +1,10 @@
 <!--pages/chat-gpt/chat/cell/question-cell/index.wxml-->
-<view class="cell-content">
-  <image class="head" src="../../../../../pages/assets/chatgpt-icon.png"></image>
-  <view class="text-box">
-    <view class="text">
-      我是一个只能机器人我是一个只能机器人我是一个只能机器人我是一个只能机器人我是一个只能机器人我是一个只能机器人我是一个只能机器人
+
+
+<view class="question-cell-content">
+  <image class="question-head" src="../../../../../pages/assets/user-head.png"></image>
+  <view class="question-text-box">
+    <view class="question-text">{{showText}}
     </view>
   </view>
 </view>
